@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glanz Manufaktur FM – Premium Fahrzeugpflege</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-dark: #9A7A30;
+      --black: #050505;
+      --surface: #0E0E0E;
+      --surface2: #161616;
+      --white: #F2F0EB;
+      --muted: rgba(242,240,235,0.45);
+      --border: rgba(201,168,76,0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CURSOR */
+    #cursor {
+      position: fixed; top: 0; left: 0; width: 12px; height: 12px;
+      background: var(--gold); border-radius: 50%; pointer-events: none;
+      z-index: 9999; transform: translate(-50%,-50%);
+      transition: transform 0.1s, opacity 0.2s;
+    }
+    #cursor-ring {
+      position: fixed; top: 0; left: 0; width: 36px; height: 36px;
+      border: 1px solid rgba(201,168,76,0.6); border-radius: 50%;
+      pointer-events: none; z-index: 9998; transform: translate(-50%,-50%);
+      transition: transform 0.3s ease, width 0.3s, height 0.3s, border-color 0.3s;
+    }
+    body:has(a:hover) #cursor-ring,
+    body:has(button:hover) #cursor-ring { width: 56px; height: 56px; border-color: var(--gold); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 60px;
+      transition: background 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(20px);
+      padding: 18px 60px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300; letter-spacing: 0.12em;
+      color: var(--white); text-decoration: none;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px; border: 1px solid var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: var(--gold); letter-spacing: 0.08em;
+    }
+    .nav-links { display: flex; gap: 42px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.78rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold); transform: scaleX(0);
+      transition: transform 0.3s; transform-origin: left;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      border: 1px solid var(--gold); color: var(--gold); padding: 10px 28px;
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      background: transparent; cursor: none; transition: all 0.3s; text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--black); }
+
+    /* HERO */
+    #hero {
+      position: relative; height: 100vh; display: flex;
+      align-items: center; justify-content: center; overflow: hidden;
+    }
+    #hero-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+    }
+    .hero-content {
+      position: relative; z-index: 10; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 32px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); opacity: 0; transform: translateY(20px);
+      animation: fadeUp 1s 0.5s forwards;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+      opacity: 0; transform: translateY(30px); animation: fadeUp 1s 0.8s forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      max-width: 480px; font-size: 0.95rem; line-height: 1.7; color: var(--muted);
+      opacity: 0; transform: translateY(20px); animation: fadeUp 1s 1.1s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 20px; align-items: center;
+      opacity: 0; transform: translateY(20px); animation: fadeUp 1s 1.4s forwards;
+    }
+    .btn-primary {
+      background: var(--gold); color: var(--black); padding: 16px 40px;
+      font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+      text-decoration: none; font-weight: 500; transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0; background: var(--gold-light);
+      transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+    }
+    .btn-primary:hover::before { transform: scaleX(1); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-secondary {
+      color: var(--white); font-size: 0.8rem; letter-spacing: 0.14em;
+      text-transform: uppercase; text-decoration: none;
+      display: flex; align-items: center; gap: 10px; transition: color 0.3s;
+    }
+    .btn-secondary:hover { color: var(--gold); }
+    .btn-secondary svg { transition: transform 0.3s; }
+    .btn-secondary:hover svg { transform: translateX(6px); }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      z-index: 10; opacity: 0; animation: fadeIn 1s 2s forwards;
+    }
+    .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+    .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+
+    /* MARQUEE */
+    .marquee-section {
+      overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 18px 0; background: var(--surface);
+    }
+    .marquee-track {
+      display: flex; gap: 60px; animation: marquee 25s linear infinite; width: max-content;
+    }
+    .marquee-item {
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--muted); white-space: nowrap; display: flex; align-items: center; gap: 60px;
+    }
+    .marquee-item .dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+
+    /* SECTION COMMONS */
+    section { padding: 120px 60px; }
+    .section-tag {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .section-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 300; line-height: 1.15;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* ABOUT */
+    #about { background: var(--surface); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+      align-items: center; max-width: 1200px; margin: 0 auto;
+    }
+    .about-visual {
+      position: relative; aspect-ratio: 4/5;
+    }
+    .about-canvas-wrap {
+      width: 100%; height: 100%; border: 1px solid var(--border);
+    }
+    #about-canvas { width: 100%; height: 100%; display: block; }
+    .about-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      width: 120px; height: 120px; background: var(--gold);
+      border-radius: 50%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2px;
+    }
+    .about-badge .num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--black); font-weight: 300; line-height: 1; }
+    .about-badge .label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(5,5,5,0.7); }
+    .about-text { display: flex; flex-direction: column; gap: 32px; }
+    .about-text p { color: var(--muted); line-height: 1.8; font-size: 0.95rem; }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 16px; }
+    .stat { border-top: 1px solid var(--border); padding-top: 20px; }
+    .stat .num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--gold); font-weight: 300; }
+    .stat .label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+    /* SERVICES */
+    #services { background: var(--black); }
+    .services-header { max-width: 1200px; margin: 0 auto 70px; }
+    .services-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .service-card {
+      background: var(--surface); padding: 50px 40px;
+      position: relative; overflow: hidden;
+      transition: background 0.4s; cursor: none;
+    }
+    .service-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .service-card:hover { background: var(--surface2); }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover .service-icon { color: var(--gold); }
+    .service-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300;
+      color: rgba(201,168,76,0.12); position: absolute; top: 24px; right: 30px;
+      line-height: 1; transition: color 0.4s;
+    }
+    .service-card:hover .service-num { color: rgba(201,168,76,0.22); }
+    .service-icon { font-size: 2rem; margin-bottom: 24px; color: var(--muted); transition: color 0.4s; }
+    .service-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; margin-bottom: 16px; }
+    .service-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.75; }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none; transition: gap 0.3s;
+    }
+    .service-link:hover { gap: 14px; }
+
+    /* PROCESS */
+    #process { background: var(--surface); }
+    .process-inner { max-width: 1200px; margin: 0 auto; }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 70px; }
+    .process-step {
+      padding: 40px 32px; background: var(--black); position: relative;
+    }
+    .process-step::after {
+      content: '→'; position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+      color: var(--gold); font-size: 1.2rem; z-index: 1;
+    }
+    .process-step:last-child::after { display: none; }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300;
+      color: var(--gold); line-height: 1; margin-bottom: 20px; opacity: 0.7;
+    }
+    .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 12px; }
+    .step-desc { color: var(--muted); font-size: 0.83rem; line-height: 1.7; }
+
+    /* GALLERY */
+    #gallery { background: var(--black); padding-bottom: 80px; }
+    .gallery-header { max-width: 1200px; margin: 0 auto 60px; }
+    .gallery-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto auto;
+      gap: 4px;
+    }
+    .gallery-item {
+      overflow: hidden; position: relative; background: var(--surface2);
+    }
+    .gallery-item:nth-child(1) { grid-column: span 7; grid-row: span 2; aspect-ratio: 4/3; }
+    .gallery-item:nth-child(2) { grid-column: span 5; aspect-ratio: 16/9; }
+    .gallery-item:nth-child(3) { grid-column: span 5; aspect-ratio: 16/9; }
+    #gallery-canvas1, #gallery-canvas2, #gallery-canvas3 { width: 100%; height: 100%; display: block; }
+    .gallery-item canvas { transition: transform 0.6s; }
+    .gallery-item:hover canvas { transform: scale(1.04); }
+    .gallery-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,5,5,0.7) 0%, transparent 50%);
+      display: flex; align-items: flex-end; padding: 24px;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); }
+
+    /* TESTIMONIALS */
+    #testimonials { background: var(--surface); }
+    .testimonials-inner { max-width: 1200px; margin: 0 auto; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 70px; }
+    .testimonial {
+      padding: 48px 40px; background: var(--black); position: relative;
+    }
+    .testimonial::before {
+      content: '"'; position: absolute; top: 16px; left: 32px;
+      font-family: 'Cormorant Garamond', serif; font-size: 5rem;
+      color: var(--gold); opacity: 0.3; line-height: 1;
+    }
+    .testimonial-text { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 32px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 16px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--surface2);
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold);
+    }
+    .author-name { font-size: 0.85rem; font-weight: 500; }
+    .author-detail { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+    .stars { color: var(--gold); font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 20px; }
+
+    /* CTA BANNER */
+    #cta-banner {
+      background: var(--gold); padding: 80px 60px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #cta-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23000' fill-opacity='0.06'/%3E%3C/svg%3E");
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .cta-inner .section-title { color: var(--black); }
+    .cta-inner p { color: rgba(5,5,5,0.65); margin: 20px 0 40px; font-size: 1rem; }
+    .btn-dark {
+      background: var(--black); color: var(--gold); padding: 18px 48px;
+      font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+      text-decoration: none; font-weight: 500; display: inline-block;
+      transition: all 0.3s;
+    }
+    .btn-dark:hover { background: var(--surface); }
+
+    /* CONTACT */
+    #contact { background: var(--black); }
+    .contact-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 48px; }
+    .contact-item { display: flex; flex-direction: column; gap: 8px; }
+    .contact-item .label { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+    .contact-item .value { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; }
+    .contact-item .sub { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+    .contact-form { display: flex; flex-direction: column; gap: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--surface); border: 1px solid var(--border); color: var(--white);
+      padding: 14px 18px; font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      font-weight: 300; outline: none; resize: none; transition: border-color 0.3s;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { height: 120px; }
+    .form-submit {
+      background: var(--gold); color: var(--black); border: none; padding: 18px 40px;
+      font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;
+      cursor: none; transition: all 0.3s; align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--gold-light); }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 60px; display: flex; align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300;
+      letter-spacing: 0.1em; color: var(--white);
+    }
+    .footer-copy { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+    .footer-links { display: flex; gap: 32px; }
+    .footer-links a { font-size: 0.72rem; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+    @keyframes marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 60px; }
+      .services-grid, .process-steps, .testimonials-grid { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 12; }
+      .gallery-item:nth-child(2), .gallery-item:nth-child(3) { grid-column: span 12; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 24px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-mark">FM</span>
+      Glanz Manufaktur
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Über uns</a></li>
+      <li><a href="#services">Leistungen</a></li>
+      <li><a href="#process">Prozess</a></li>
+      <li><a href="#gallery">Galerie</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Termin anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Premium Fahrzeugpflege &amp; Detailing</p>
+      <h1 class="hero-title">
+        Wo <em>Perfektion</em><br>zur Kunst wird
+      </h1>
+      <p class="hero-sub">Handwerkliche Präzision trifft modernste Technologie. Wir veredeln Ihr Fahrzeug mit Leidenschaft und Expertise.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary"><span>Unsere Leistungen</span></a>
+        <a href="#about" class="btn-secondary">
+          Mehr erfahren
+          <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+            <path d="M0 5H14M10 1L14 5L10 9" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item">Keramikversiegelung <span class="dot"></span></div>
+      <div class="marquee-item">Lackschutzfolie <span class="dot"></span></div>
+      <div class="marquee-item">Paint Correction <span class="dot"></span></div>
+      <div class="marquee-item">Innenraumreinigung <span class="dot"></span></div>
+      <div class="marquee-item">Polishing <span class="dot"></span></div>
+      <div class="marquee-item">Nanoversiegelung <span class="dot"></span></div>
+      <div class="marquee-item">Fahrzeugaufbereitung <span class="dot"></span></div>
+      <div class="marquee-item">Keramikversiegelung <span class="dot"></span></div>
+      <div class="marquee-item">Lackschutzfolie <span class="dot"></span></div>
+      <div class="marquee-item">Paint Correction <span class="dot"></span></div>
+      <div class="marquee-item">Innenraumreinigung <span class="dot"></span></div>
+      <div class="marquee-item">Polishing <span class="dot"></span></div>
+      <div class="marquee-item">Nanoversiegelung <span class="dot"></span></div>
+      <div class="marquee-item">Fahrzeugaufbereitung <span class="dot"></span></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-canvas-wrap">
+          <canvas id="about-canvas"></canvas>
+        </div>
+        <div class="about-badge">
+          <span class="num">12</span>
+          <span class="label">Jahre<br>Erfahrung</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <div>
+          <p class="section-tag reveal">Über die Manufaktur</p>
+          <h2 class="section-title reveal reveal-delay-1">Exzellenz als <em>Philosophie</em></h2>
+        </div>
+        <p class="reveal reveal-delay-2">Die Glanz Manufaktur FM steht für höchste Präzision in der Fahrzeugpflege. Gegründet mit einer klaren Vision: jedes Fahrzeug in seinen idealen Zustand zu versetzen – oder besser.</p>
+        <p class="reveal reveal-delay-3">Unser Team von zertifizierten Detailern arbeitet ausschließlich mit professionellen Produkten der Premiumklasse. Jeder Schritt, jede Bewegung, jedes Detail wird mit der Sorgfalt eines Handwerkers ausgeführt.</p>
+        <div class="about-stats">
+          <div class="stat reveal reveal-delay-1">
+            <div class="num">500+</div>
+            <div class="label">Fahrzeuge veredelt</div>
+          </div>
+          <div class="stat reveal reveal-delay-2">
+            <div class="num">98%</div>
+            <div class="label">Kundenzufriedenheit</div>
+          </div>
+          <div class="stat reveal reveal-delay-3">
+            <div class="num">15+</div>
+            <div class="label">Zertifizierungen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <p class="section-tag reveal">Was wir bieten</p>
+      <h2 class="section-title reveal reveal-delay-1">Unsere <em>Leistungen</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <div class="service-icon">◈</div>
+        <h3 class="service-title">Keramikversiegelung</h3>
+        <p class="service-desc">Dauerhafte Versiegelung mit keramischen Nanopartikeln. Schützt den Lack langfristig vor UV-Strahlung, Verschmutzungen und chemischen Einflüssen.</p>
+        <a href="#contact" class="service-link">Anfragen →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-num">02</span>
+        <div class="service-icon">◇</div>
+        <h3 class="service-title">Paint Correction</h3>
+        <p class="service-desc">Professionelle Lackaufbereitung zur Entfernung von Hologrammen, Swirls und Kratzern. Schritt für Schritt zur makellose Oberfläche.</p>
+        <a href="#contact" class="service-link">Anfragen →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-num">03</span>
+        <div class="service-icon">▽</div>
+        <h3 class="service-title">Lackschutzfolie</h3>
+        <p class="service-desc">Unsichtbare Schutzfolie (PPF) für maximalen physischen Schutz. Selbstheilend, langlebig und optisch nicht wahrnehmbar.</p>
+        <a href="#contact" class="service-link">Anfragen →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-num">04</span>
+        <div class="service-icon">○</div>
+        <h3 class="service-title">Innenraum Detailing</h3>
+        <p class="service-desc">Tiefenreinigung und Aufbereitung aller Innenraumoberflächen. Von Leder über Alcantara bis hin zu Kunststoffen und Teppichen.</p>
+        <a href="#contact" class="service-link">Anfragen →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-num">05</span>
+        <div class="service-icon">□</div>
+        <h3 class="service-title">Felgenversiegelung</h3>
+        <p class="service-desc">Spezialbeschichtung für Alu- und Stahlfelgen. Erleichtert die Reinigung erheblich und schützt vor Bremsstaub, Rost und Korrosion.</p>
+        <a href="#contact" class="service-link">Anfragen →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-num">06</span>
+        <div class="service-icon">△</div>
+        <h3 class="service-title">Fahrzeugaufbereitung</h3>
+        <p class="service-desc">Ganzheitliche Komplettaufbereitung für Händler und Privatpersonen. Optimale Wertsteigerung vor Verkauf oder einfach für den perfekten Auftritt.</p>
+        <a href="#contact" class="service-link">Anfragen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="process-inner">
+      <p class="section-tag reveal">Wie wir arbeiten</p>
+      <h2 class="section-title reveal reveal-delay-1">Unser <em>Prozess</em></h2>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Beratung &amp; Analyse</h3>
+          <p class="step-desc">Gründliche Inspektion des Fahrzeugs und individuelle Beratung zur optimalen Behandlung.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Vorbereitung</h3>
+          <p class="step-desc">Professionelle Grundreinigung, Entfernung von Kontaminationen und Vorbereitung der Oberfläche.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Behandlung</h3>
+          <p class="step-desc">Präzise Ausführung der vereinbarten Leistungen mit Premiumprodukte und Fachkompetenz.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-num">04</div>
+          <h3 class="step-title">Qualitätskontrolle</h3>
+          <p class="step-desc">Abschließende Inspektion unter Spezialbeleuchtung und detaillierte Übergabe an den Kunden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="gallery-header">
+      <p class="section-tag reveal">Unsere Arbeit</p>
+      <h2 class="section-title reveal reveal-delay-1">Ergebnisse, die <em>überzeugen</em></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <canvas id="gallery-canvas1"></canvas>
+        <div class="gallery-overlay"><span>Keramik Vollversiegelung</span></div>
+      </div>
+      <div class="gallery-item">
+        <canvas id="gallery-canvas2"></canvas>
+        <div class="gallery-overlay"><span>Paint Correction Detail</span></div>
+      </div>
+      <div class="gallery-item">
+        <canvas id="gallery-canvas3"></canvas>
+        <div class="gallery-overlay"><span>Interior Detailing</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="testimonials-inner">
+      <p class="section-tag reveal">Kundenstimmen</p>
+      <h2 class="section-title reveal reveal-delay-1">Was unsere Kunden <em>sagen</em></h2>
+      <div class="testimonials-grid">
+        <div class="testimonial reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Absolut beeindruckend. Mein Porsche sieht aus wie am ersten Tag – besser sogar. Die Keramikversiegelung hat alles verändert. Klare Empfehlung!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <div class="author-name">Markus R.</div>
+              <div class="author-detail">Porsche 911 GT3 · Zürich</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal reveal-delay-1">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Professioneller geht es nicht. Vom ersten Kontakt bis zur Übergabe – alles perfekt organisiert. Das Ergebnis hat alle Erwartungen übertroffen.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <div class="author-name">Sandra M.</div>
+              <div class="author-detail">BMW M4 · Basel</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal reveal-delay-2">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Ich bringe seit Jahren alle meine Fahrzeuge hierher. Die Qualität ist konstant auf höchstem Niveau. Ein Team, dem man blind vertrauen kann.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">T</div>
+            <div>
+              <div class="author-name">Thomas K.</div>
+              <div class="author-detail">Mercedes AMG · Bern</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div id="cta-banner">
+    <div class="cta-inner">
+      <h2 class="section-title">Bereit für den <em style="color:var(--black);font-style:italic">Glanz</em>-Effekt?</h2>
+      <p>Vereinbaren Sie noch heute Ihren persönlichen Beratungstermin – kostenlos und unverbindlich.</p>
+      <a href="#contact" class="btn-dark">Jetzt Termin anfragen</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div>
+          <p class="section-tag reveal">Kontakt</p>
+          <h2 class="section-title reveal reveal-delay-1">Nehmen Sie <em>Kontakt</em> auf</h2>
+        </div>
+        <div class="contact-item reveal">
+          <span class="label">Adresse</span>
+          <span class="value">Glanz Manufaktur FM</span>
+          <span class="sub">Musterstrasse 12<br>8000 Zürich, Schweiz</span>
+        </div>
+        <div class="contact-item reveal reveal-delay-1">
+          <span class="label">Telefon</span>
+          <span class="value">+41 44 123 45 67</span>
+          <span class="sub">Mo – Fr: 08:00 – 18:00 Uhr<br>Sa: 09:00 – 14:00 Uhr</span>
+        </div>
+        <div class="contact-item reveal reveal-delay-2">
+          <span class="label">E-Mail</span>
+          <span class="value">info@glanz-manufaktur.ch</span>
+          <span class="sub">Antwort innerhalb von 24 Stunden</span>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form reveal">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Vorname</label>
+              <input type="text" placeholder="Max" />
+            </div>
+            <div class="form-group">
+              <label>Nachname</label>
+              <input type="text" placeholder="Mustermann" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>E-Mail</label>
+            <input type="email" placeholder="max@beispiel.ch" />
+          </div>
+          <div class="form-group">
+            <label>Fahrzeug</label>
+            <input type="text" placeholder="z.B. Porsche 911, BMW M3 ..." />
+          </div>
+          <div class="form-group">
+            <label>Gewünschte Leistung</label>
+            <select>
+              <option value="">Bitte wählen ...</option>
+              <option>Keramikversiegelung</option>
+              <option>Paint Correction</option>
+              <option>Lackschutzfolie (PPF)</option>
+              <option>Innenraum Detailing</option>
+              <option>Felgenversiegelung</option>
+              <option>Fahrzeugaufbereitung</option>
+              <option>Sonstiges / Beratung</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Nachricht</label>
+            <textarea placeholder="Beschreiben Sie Ihr Anliegen ..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Anfrage senden</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Glanz Manufaktur FM</div>
+    <div class="footer-copy">© 2025 Glanz Manufaktur FM. Alle Rechte vorbehalten.</div>
+    <div class="footer-links">
+      <a href="#">Datenschutz</a>
+      <a href="#">Impressum</a>
+      <a href="#">AGB</a>
+    </div>
+  </footer>
+
+  <!-- THREE.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+  (function() {
+
+    // ── CURSOR ────────────────────────────────────────────────────────────────
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function tick() {
+      rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+      ring.style.left   = rx + 'px'; ring.style.top  = ry + 'px';
+      requestAnimationFrame(tick);
+    })();
+
+    // ── NAV ───────────────────────────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── SCROLL REVEAL ─────────────────────────────────────────────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    // ── THREE HELPER ──────────────────────────────────────────────────────────
+    function makeRenderer(canvas, alpha = true) {
+      const r = new THREE.WebGLRenderer({ canvas, alpha, antialias: true });
+      r.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      r.toneMapping = THREE.ACESFilmicToneMapping;
+      r.toneMappingExposure = 1.0;
+      return r;
+    }
+
+    // ── HERO 3D ───────────────────────────────────────────────────────────────
+    (function heroScene() {
+      const canvas = document.getElementById('hero-canvas');
+      const renderer = makeRenderer(canvas);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+      camera.position.set(0, 0, 5);
+
+      // Ambient + directional lights
+      scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+      const dl = new THREE.DirectionalLight(0xC9A84C, 2.5);
+      dl.position.set(2, 4, 3); scene.add(dl);
+      const dl2 = new THREE.DirectionalLight(0x5588ff, 0.8);
+      dl2.position.set(-3, -1, 2); scene.add(dl2);
+
+      // Gold material
+      const goldMat = new THREE.MeshStandardMaterial({
+        color: 0xC9A84C, metalness: 1.0, roughness: 0.25,
+        envMapIntensity: 1.5
+      });
+      const wireMat = new THREE.MeshBasicMaterial({ color: 0xC9A84C, wireframe: true, opacity: 0.06, transparent: true });
+
+      // Central torus knot
+      const tkGeo = new THREE.TorusKnotGeometry(0.9, 0.25, 180, 24, 2, 3);
+      const torusKnot = new THREE.Mesh(tkGeo, goldMat); scene.add(torusKnot);
+
+      // Wireframe sphere around
+      const sphGeo = new THREE.IcosahedronGeometry(2.2, 1);
+      const sphere = new THREE.Mesh(sphGeo, wireMat); scene.add(sphere);
+
+      // Floating particles
+      const partCount = 600;
+      const partGeo = new THREE.BufferGeometry();
+      const positions = new Float32Array(partCount * 3);
+      for (let i = 0; i < partCount; i++) {
+        const r = 2.5 + Math.random() * 3.5;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        positions[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+        positions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+        positions[i*3+2] = r * Math.cos(phi);
+      }
+      partGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const partMat = new THREE.PointsMaterial({ color: 0xC9A84C, size: 0.025, transparent: true, opacity: 0.7 });
+      scene.add(new THREE.Points(partGeo, partMat));
+
+      // Mouse interaction
+      let targetX = 0, targetY = 0;
+      document.addEventListener('mousemove', e => {
+        targetX = (e.clientX / window.innerWidth  - 0.5) * 1.2;
+        targetY = (e.clientY / window.innerHeight - 0.5) * 1.0;
+      });
+
+      function resize() {
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h; camera.updateProjectionMatrix();
+      }
+      resize(); new ResizeObserver(resize).observe(canvas);
+
+      let t = 0;
+      (function animate() {
+        requestAnimationFrame(animate); t += 0.008;
+        torusKnot.rotation.x += 0.006; torusKnot.rotation.y += 0.009;
+        sphere.rotation.y += 0.004; sphere.rotation.x -= 0.002;
+        scene.rotation.y += (targetX - scene.rotation.y) * 0.04;
+        scene.rotation.x += (-targetY - scene.rotation.x) * 0.04;
+        dl.position.x = Math.sin(t) * 4; dl.position.y = Math.cos(t * 0.7) * 4;
+        renderer.render(scene, camera);
+      })();
+    })();
+
+    // ── ABOUT 3D ──────────────────────────────────────────────────────────────
+    (function aboutScene() {
+      const canvas = document.getElementById('about-canvas');
+      const renderer = makeRenderer(canvas);
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0E0E0E);
+      const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+      camera.position.set(0, 0, 5);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 0.2));
+      const light1 = new THREE.PointLight(0xC9A84C, 4, 12);
+      light1.position.set(2, 3, 2); scene.add(light1);
+      const light2 = new THREE.PointLight(0x223388, 2, 10);
+      light2.position.set(-3, -1, 1); scene.add(light2);
+
+      const mat = new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 1, roughness: 0.1 });
+      const goldM = new THREE.MeshStandardMaterial({ color: 0xC9A84C, metalness: 1, roughness: 0.2 });
+
+      // Layered rings
+      const rings = [];
+      for (let i = 0; i < 5; i++) {
+        const r = 0.4 + i * 0.32;
+        const geo = new THREE.TorusGeometry(r, 0.015 + i * 0.005, 16, 80);
+        const mesh = new THREE.Mesh(geo, i % 2 === 0 ? goldM : mat);
+        mesh.rotation.x = (Math.PI / 2) * (i * 0.3);
+        mesh.rotation.z = i * 0.4;
+        scene.add(mesh); rings.push(mesh);
+      }
+
+      // Center sphere
+      const cSphere = new THREE.Mesh(new THREE.SphereGeometry(0.18, 32, 32), goldM);
+      scene.add(cSphere);
+
+      function resize() {
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h; camera.updateProjectionMatrix();
+      }
+      resize(); new ResizeObserver(resize).observe(canvas);
+
+      let t = 0;
+      (function animate() {
+        requestAnimationFrame(animate); t += 0.01;
+        rings.forEach((r, i) => {
+          r.rotation.x += 0.008 * (i % 2 === 0 ? 1 : -1);
+          r.rotation.y += 0.005 * (i % 3 === 0 ? 1 : -0.5);
+        });
+        light1.position.x = Math.sin(t) * 3; light1.position.z = Math.cos(t) * 3;
+        renderer.render(scene, camera);
+      })();
+    })();
+
+    // ── GALLERY SCENES ────────────────────────────────────────────────────────
+    function makeGalleryScene(canvasId, palette, shapeType) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const renderer = makeRenderer(canvas, false);
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(palette.bg);
+      const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
+      camera.position.set(0, 0, 4);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 0.15));
+      const pl = new THREE.PointLight(palette.light, 5, 15);
+      pl.position.set(2, 2, 2); scene.add(pl);
+      const pl2 = new THREE.PointLight(0x334488, 2, 10);
+      pl2.position.set(-2, -2, 1); scene.add(pl2);
+
+      const mat = new THREE.MeshStandardMaterial({ color: palette.color, metalness: 0.95, roughness: 0.15 });
+      let mesh;
+      if (shapeType === 'octahedron') {
+        mesh = new THREE.Mesh(new THREE.OctahedronGeometry(1.1, 0), mat);
+      } else if (shapeType === 'icosahedron') {
+        mesh = new THREE.Mesh(new THREE.IcosahedronGeometry(1.0, 0), mat);
+      } else {
+        mesh = new THREE.Mesh(new THREE.DodecahedronGeometry(1.0, 0), mat);
+      }
+      scene.add(mesh);
+
+      // Grid of small spheres behind
+      const sm = new THREE.MeshStandardMaterial({ color: palette.color, metalness: 1, roughness: 0.3, opacity: 0.35, transparent: true });
+      for (let x = -2; x <= 2; x++) {
+        for (let y = -2; y <= 2; y++) {
+          const s = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 8), sm);
+          s.position.set(x * 0.6, y * 0.6, -1.5); scene.add(s);
+        }
+      }
+
+      function resize() {
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h; camera.updateProjectionMatrix();
+      }
+      resize(); new ResizeObserver(resize).observe(canvas);
+
+      let t = 0;
+      (function animate() {
+        requestAnimationFrame(animate); t += 0.01;
+        mesh.rotation.x += 0.007; mesh.rotation.y += 0.011;
+        pl.position.x = Math.sin(t) * 3; pl.position.y = Math.cos(t * 0.8) * 3;
+        renderer.render(scene, camera);
+      })();
+    }
+
+    makeGalleryScene('gallery-canvas1', { bg: 0x0a0a0a, light: 0xC9A84C, color: 0xC9A84C }, 'octahedron');
+    makeGalleryScene('gallery-canvas2', { bg: 0x080810, light: 0x8899FF, color: 0x9999CC }, 'icosahedron');
+    makeGalleryScene('gallery-canvas3', { bg: 0x080808, light: 0xFFBB44, color: 0xAA8844 }, 'dodecahedron');
+
+    // ── SMOOTH ANCHOR SCROLL ──────────────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // ── FORM SUBMIT ───────────────────────────────────────────────────────────
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.form-submit');
+      btn.textContent = 'Anfrage gesendet ✓';
+      btn.style.background = '#2d6a3f';
+      btn.style.color = '#fff';
+      setTimeout(() => { btn.textContent = 'Anfrage senden'; btn.style.background = ''; btn.style.color = ''; }, 3500);
+    });
+
+  })();
+  </script>
+</body>
+</html>
