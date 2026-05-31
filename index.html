@@ -3,1648 +3,1202 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Glanz Power-Gel – Für freie Rohre in 15 Minuten</title>
+  <meta name="description" content="Glanz Power-Gel Abflussreiniger – löst hartnäckige Verstopfungen in 15 Minuten. Schweizer Qualität. Jetzt kaufen.">
 
-  <!-- Primary SEO -->
-  <title>Glanz – Premium Abflussreiniger | Für freie, saubere Rohre – Schweiz</title>
-  <meta name="description" content="Glanz Abflussreiniger – kraftvoll, schnell und sicher. Schweizer Qualität für freie, saubere Rohre in Küche und Bad. Jetzt online kaufen. Lieferung in die Schweiz.">
-  <meta name="keywords" content="Abflussreiniger, Rohrreiniger, Schweiz, Glanz, Küche, Bad, Rohrverstopfung, Reinigungsprodukte, Abfluss frei, saubere Rohre">
-  <meta name="author" content="Glanz">
-  <meta name="robots" content="index, follow">
-
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://glanz.ch/">
-  <link rel="alternate" hreflang="de-CH" href="https://glanz.ch/">
-  <link rel="alternate" hreflang="de" href="https://glanz.ch/">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Glanz – Premium Abflussreiniger Schweiz">
-  <meta property="og:description" content="Kraftvolle Abflussreiniger für freie, saubere Rohre. Schweizer Qualität. Schnelle Lieferung.">
-  <meta property="og:image" content="https://glanz.ch/og-image.jpg">
-  <meta property="og:url" content="https://glanz.ch/">
-  <meta property="og:locale" content="de_CH">
-  <meta property="og:site_name" content="Glanz">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Glanz – Premium Abflussreiniger Schweiz">
-  <meta name="twitter:description" content="Kraftvolle Abflussreiniger für freie, saubere Rohre. Schweizer Qualität.">
-  <meta name="twitter:image" content="https://glanz.ch/og-image.jpg">
-
-  <!-- JSON-LD: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Glanz",
-    "url": "https://glanz.ch",
-    "logo": "https://glanz.ch/logo.png",
-    "description": "Schweizer Hersteller von Premium Abflussreinigern",
-    "address": { "@type": "PostalAddress", "addressCountry": "CH" },
-    "sameAs": ["https://www.instagram.com/glanz.ch", "https://www.facebook.com/glanz.ch"]
-  }
-  </script>
-
-  <!-- JSON-LD: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Glanz",
-    "url": "https://glanz.ch",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://glanz.ch/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <!-- JSON-LD: Product -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Glanz Power-Gel Abflussreiniger",
-    "description": "Kraftvoller Gel-Abflussreiniger – löst hartnäckige Verstopfungen in Küche und Bad in 15 Minuten",
-    "brand": { "@type": "Brand", "name": "Glanz" },
-    "offers": {
-      "@type": "Offer",
-      "price": "14.90",
-      "priceCurrency": "CHF",
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "Organization", "name": "Glanz" }
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "247"
-    }
-  }
-  </script>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Three.js r128 -->
+  <!-- Three.js + GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <style>
-    /* === CSS Custom Properties === */
     :root {
-      --navy: #15336B;
-      --deep: #1048A0;
-      --gold: #C8A23A;
-      --gold-light: #E8C96A;
-      --sky: #DCE9FB;
-      --paper: #F8F9FB;
-      --white: #FFFFFF;
-      --text: #1A2340;
-      --text-muted: #5A6A8A;
-      --radius: 16px;
-      --shadow: 0 8px 32px rgba(21,51,107,0.10);
-      --shadow-lg: 0 24px 64px rgba(21,51,107,0.18);
-      --transition: 0.3s ease;
-      --font-display: 'Lobster', cursive;
-      --font-body: 'Baloo 2', sans-serif;
+      --navy:  #0f2557;
+      --deep:  #0d3da8;
+      --gold:  #c8a23a;
+      --gold2: #e8c96a;
+      --sky:   #dce9fb;
+      --paper: #f5f7fc;
+      --white: #ffffff;
+      --text:  #111827;
+      --muted: #4b5c7e;
+      --r: 18px;
+      --sh: 0 8px 40px rgba(13,61,168,.13);
+      --sh2: 0 24px 80px rgba(13,61,168,.22);
+      --f-display: 'Lobster', cursive;
+      --f-body: 'Baloo 2', sans-serif;
     }
 
-    /* === Reset & Base === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      background: var(--paper);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    img { max-width: 100%; height: auto; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--f-body); background: var(--paper); color: var(--text); overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
-    button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
 
-    /* === Utility === */
-    .sr-only {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-    }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 96px 0; }
+    /* ── UTILITY ── */
+    .sr { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0); }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
-    /* === Buttons === */
+    /* ── BUTTONS ── */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 1rem;
-      transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 40px; border-radius: 60px;
+      font-family: var(--f-body); font-weight: 800; font-size: 1.05rem;
+      cursor: pointer; border: none; transition: transform .25s, box-shadow .25s, background .25s;
       white-space: nowrap;
-      cursor: pointer;
     }
-    .btn-primary { background: var(--gold); color: var(--navy); }
-    .btn-primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(200,162,58,0.4);
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: var(--navy);
+      box-shadow: 0 8px 32px rgba(200,162,58,.45);
     }
+    .btn-gold:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 18px 48px rgba(200,162,58,.6); }
     .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.55);
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,.5);
     }
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: var(--white);
-      transform: translateY(-3px);
-    }
-    .btn-navy { background: var(--navy); color: var(--white); }
-    .btn-navy:hover {
-      background: var(--deep);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); transform: translateY(-3px); }
 
-    /* === Scroll Reveal === */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-50px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal-left.visible { opacity: 1; transform: none; }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(50px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal-right.visible { opacity: 1; transform: none; }
-
-    /* ======================== NAVIGATION ======================== */
+    /* ── NAV ── */
     #nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 20px 0;
-      transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      padding: 22px 0;
+      transition: background .35s, padding .35s, box-shadow .35s;
     }
-    #nav.scrolled {
-      background: rgba(248,249,251,0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 2px 24px rgba(21,51,107,0.09);
-      padding: 12px 0;
+    #nav.solid {
+      background: rgba(245,247,252,.95);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 2px 20px rgba(15,37,87,.08);
+      padding: 14px 0;
     }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-    }
-    .nav-logo { display: flex; flex-direction: column; line-height: 1; }
-    .nav-logo-name {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--navy);
-      letter-spacing: 1px;
-    }
-    .nav-logo-sub {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-    .nav-links a {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--navy);
-      opacity: 0.75;
-      transition: opacity 0.2s;
-    }
-    .nav-links a:hover { opacity: 1; }
-    .nav-actions { display: flex; align-items: center; gap: 12px; }
-    .cart-btn {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 20px;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-    .cart-btn:hover { background: var(--deep); transform: translateY(-1px); }
-    .cart-badge {
-      position: absolute;
-      top: -6px; right: -6px;
-      background: var(--gold);
-      color: var(--navy);
-      font-size: 0.68rem;
-      font-weight: 800;
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      padding: 8px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px; height: 2px;
-      background: var(--navy);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--paper);
-      z-index: 999;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 36px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      color: var(--navy);
-      transition: color 0.2s;
-    }
-    .mobile-menu a:hover { color: var(--deep); }
-    .mobile-close {
-      position: absolute;
-      top: 24px; right: 24px;
-      font-size: 1.8rem;
-      color: var(--navy);
-      cursor: pointer;
-      padding: 8px;
-    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--f-display); font-size: 1.9rem; color: var(--navy); }
+    .nav-logo span { color: var(--gold); }
+    .nav-cta { padding: 11px 28px; font-size: .9rem; }
 
-    /* ======================== HERO ======================== */
+    /* ════════════════════════════════
+       HERO
+    ════════════════════════════════ */
     #hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--deep) 65%, #1a60c0 100%);
+      background: linear-gradient(145deg, #0a1e4a 0%, #0d3da8 55%, #1a5cd4 100%);
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
       position: relative;
       overflow: hidden;
-      padding-top: 80px;
     }
     #hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(200,162,58,0.07) 0%, transparent 65%);
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(200,162,58,.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(13,61,168,.4) 0%, transparent 60%);
       pointer-events: none;
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 60px 40px 60px 60px;
+
+    /* floating particles */
+    .hero-particles {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .hero-particles span {
+      position: absolute;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(200,162,58,.6);
+      animation: floatP var(--d, 6s) var(--delay, 0s) ease-in-out infinite alternate;
+    }
+    @keyframes floatP {
+      from { transform: translateY(0) scale(1); opacity: .6; }
+      to   { transform: translateY(-60px) scale(1.4); opacity: .1; }
+    }
+
+    .hero-copy {
+      position: relative; z-index: 2;
+      padding: 120px 40px 80px 60px;
     }
     .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(200,162,58,0.15);
-      border: 1px solid rgba(200,162,58,0.4);
-      color: var(--gold-light);
-      padding: 6px 18px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 28px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(200,162,58,.15);
+      border: 1px solid rgba(200,162,58,.45);
+      color: var(--gold2);
+      padding: 7px 20px; border-radius: 60px;
+      font-size: .82rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+      margin-bottom: 32px;
     }
     .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-family: var(--f-display);
+      font-size: clamp(2.8rem, 5vw, 5rem);
       color: var(--white);
-      margin-bottom: 16px;
       line-height: 1.05;
-    }
-    .hero-title span { color: var(--gold-light); }
-    .hero-subtitle {
-      font-size: clamp(1rem, 1.8vw, 1.2rem);
-      color: rgba(255,255,255,0.78);
-      margin-bottom: 44px;
-      font-weight: 500;
-      line-height: 1.7;
-      max-width: 480px;
-    }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-    #hero-canvas {
-      position: absolute;
-      right: 0; top: 0;
-      width: 50%; height: 100%;
-      z-index: 1;
-    }
-    .hero-scroll {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.45);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      animation: heroScroll 2s ease-in-out infinite;
-      z-index: 3;
-    }
-    .hero-scroll-line {
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.45), transparent);
-    }
-    @keyframes heroScroll {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
-    }
-
-    /* ======================== TRUST BAR ======================== */
-    #trust {
-      background: var(--white);
-      border-bottom: 3px solid var(--gold);
-      padding: 18px 0;
-      overflow: hidden;
-    }
-    .trust-track {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      animation: trustScroll 24s linear infinite;
-      width: max-content;
-    }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      white-space: nowrap;
-      font-weight: 700;
-      color: var(--navy);
-      font-size: 0.9rem;
-    }
-    .trust-icon {
-      width: 34px; height: 34px;
-      background: var(--sky);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .trust-sep { color: var(--gold); font-size: 1.3rem; flex-shrink: 0; }
-    @keyframes trustScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ======================== SECTION HEADER ======================== */
-    .sec-head { text-align: center; margin-bottom: 64px; }
-    .sec-label {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-    .sec-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--navy);
-      margin-bottom: 16px;
-      line-height: 1.15;
-    }
-    .sec-desc {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 540px;
-      margin: 0 auto;
-    }
-
-    /* ======================== FEATURES ======================== */
-    #features { background: var(--paper); }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-    .feature-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 40px 32px;
-      box-shadow: var(--shadow);
-      border-top: 4px solid var(--gold);
-      transition: transform 0.35s, box-shadow 0.35s;
-    }
-    .feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
-    .feature-canvas-wrap {
-      width: 100%; height: 156px;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 28px;
-      background: var(--sky);
-    }
-    .feature-canvas-wrap canvas { width: 100% !important; height: 100% !important; }
-    .feature-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
-    .feature-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
-
-    /* ======================== PRODUCTS ======================== */
-    #products { background: var(--white); }
-    .filter-tabs {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-    .filter-tab {
-      padding: 10px 26px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      border: 2px solid var(--sky);
-      color: var(--text-muted);
-      background: var(--paper);
-      transition: var(--transition);
-      cursor: pointer;
-    }
-    .filter-tab.active, .filter-tab:hover {
-      background: var(--navy);
-      color: var(--white);
-      border-color: var(--navy);
-    }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-    .product-card {
-      background: var(--paper);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s, box-shadow 0.3s;
-      transform-style: preserve-3d;
-      perspective: 1000px;
-      position: relative;
-    }
-    .product-card:hover { box-shadow: var(--shadow-lg); }
-    .prod-badge {
-      position: absolute;
-      top: 14px; left: 14px;
-      background: var(--gold);
-      color: var(--navy);
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 4px 12px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      z-index: 2;
-    }
-    .product-img {
-      width: 100%; height: 220px;
-      background: linear-gradient(135deg, var(--sky) 0%, #c0d4f0 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .product-img::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 55%, rgba(21,51,107,0.06));
-    }
-    .bottle {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .bottle-cap {
-      width: 28px; height: 16px;
-      border-radius: 6px 6px 0 0;
-      margin-bottom: -2px;
-      z-index: 1;
-    }
-    .bottle-body {
-      width: 68px; height: 118px;
-      border-radius: 12px 12px 8px 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .bottle-label {
-      font-family: var(--font-display);
-      color: white;
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 0 6px;
-      line-height: 1.2;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    }
-    .product-info { padding: 24px; }
-    .prod-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 6px; }
-    .product-name {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .product-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
       margin-bottom: 20px;
-      line-height: 1.65;
     }
-    .product-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-    .product-price {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1;
+    .hero-title em { color: var(--gold2); font-style: normal; }
+    .hero-sub {
+      font-size: clamp(.95rem, 1.5vw, 1.15rem);
+      color: rgba(255,255,255,.72);
+      line-height: 1.75;
+      max-width: 460px;
+      margin-bottom: 48px;
+      font-weight: 500;
     }
-    .product-price small {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-    .add-cart {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 18px;
-      background: var(--gold);
-      color: var(--navy);
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-    }
-    .add-cart:hover { background: var(--gold-light); transform: scale(1.05); }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
 
-    /* ======================== ABOUT ======================== */
-    #about { background: var(--paper); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+    /* trust strip under CTA */
+    .hero-trust {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-top: 36px;
     }
-    .about-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-    .about-title { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--navy); margin-bottom: 24px; line-height: 1.15; }
-    .about-text { color: var(--text-muted); font-size: 1rem; line-height: 1.85; margin-bottom: 20px; }
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 2px solid var(--sky);
+    .hero-trust-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: .82rem; font-weight: 700;
+      color: rgba(255,255,255,.55);
     }
-    .stat { text-align: center; }
-    .stat-num { font-family: var(--font-display); font-size: 2.4rem; color: var(--navy); line-height: 1; }
-    .stat-label { font-size: 0.82rem; color: var(--text-muted); font-weight: 600; margin-top: 4px; }
-    #about-canvas {
-      width: 100%; height: 500px;
-      border-radius: 24px;
-      overflow: hidden;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--deep) 100%);
+    .hero-trust-item .dot {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(200,162,58,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem;
+    }
+
+    /* Canvas column */
+    #canvas-col {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      height: 100vh;
+    }
+    #hero-canvas {
+      width: 100%; height: 100%;
       display: block;
     }
 
-    /* ======================== TESTIMONIALS ======================== */
-    #testimonials { background: var(--navy); overflow: hidden; }
-    .testi-head { text-align: center; margin-bottom: 64px; }
-    .testi-head .sec-label { color: var(--gold-light); }
-    .testi-head .sec-title { color: var(--white); }
-    .avg-rating {
+    /* scroll hint */
+    .scroll-hint {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,.35);
+      font-size: .7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      z-index: 5;
+      animation: sh 2.2s ease-in-out infinite;
+    }
+    .scroll-hint-bar { width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(255,255,255,.35), transparent); }
+    @keyframes sh {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* ════════════════════════════════
+       SCROLLING 3D CANVAS SECTION
+    ════════════════════════════════ */
+    #scroll-section {
+      position: relative;
+      height: 400vh;
+      background: var(--paper);
+    }
+    #scroll-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
       display: flex;
       align-items: center;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 24px;
+      overflow: hidden;
     }
-    .avg-num { font-family: var(--font-display); font-size: 4.5rem; color: var(--gold-light); line-height: 1; }
-    .avg-stars-col { display: flex; flex-direction: column; gap: 4px; }
-    .avg-stars { color: var(--gold); font-size: 1.3rem; letter-spacing: 2px; }
-    .avg-count { font-size: 0.82rem; color: rgba(255,255,255,0.45); font-weight: 600; }
-    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .testi-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius);
-      padding: 32px;
-      transition: var(--transition);
+    #scroll-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
     }
-    .testi-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-5px); }
-    .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 1px; }
-    .testi-text { color: rgba(255,255,255,0.82); font-size: 0.97rem; line-height: 1.75; margin-bottom: 24px; font-style: italic; }
-    .testi-author { display: flex; align-items: center; gap: 12px; }
-    .testi-avatar {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: white;
+
+    /* text panels that overlay the canvas */
+    .panel {
+      position: absolute;
+      z-index: 10;
+      max-width: 480px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+      pointer-events: none;
+    }
+    .panel.show { opacity: 1; transform: none; pointer-events: auto; }
+    .panel-left  { left: 60px; }
+    .panel-right { right: 60px; text-align: right; }
+    .panel-center { left: 50%; transform: translateX(-50%) translateY(30px); text-align: center; }
+    .panel-center.show { transform: translateX(-50%) translateY(0); }
+    .panel-num {
+      font-family: var(--f-display);
+      font-size: 7rem; line-height: 1;
+      color: rgba(13,61,168,.07);
+      margin-bottom: -20px;
+    }
+    .panel-label {
+      font-size: .78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .panel-title {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+    .panel-text {
+      font-size: 1rem; color: var(--muted); line-height: 1.8;
+    }
+    .panel-check { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+    .panel-check li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: .95rem; color: var(--text); font-weight: 600;
+    }
+    .panel-check li::before {
+      content: '✓';
+      width: 26px; height: 26px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--deep), var(--navy));
+      color: #fff; font-weight: 800; font-size: .75rem;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .testi-name { font-weight: 700; color: var(--white); font-size: 0.92rem; }
-    .testi-loc { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
-    .testi-prod { font-size: 0.78rem; color: var(--gold-light); font-weight: 600; margin-top: 1px; }
 
-    /* ======================== NEWSLETTER ======================== */
-    #newsletter {
-      background: linear-gradient(135deg, var(--deep) 0%, var(--navy) 100%);
+    /* ════════════════════════════════
+       HOW IT WORKS
+    ════════════════════════════════ */
+    #how {
+      background: linear-gradient(160deg, var(--navy) 0%, #0d3da8 100%);
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #how::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,162,58,.1) 0%, transparent 60%);
+    }
+    .how-label { font-size: .78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold2); margin-bottom: 12px; }
+    .how-title {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--white); margin-bottom: 64px; text-align: center;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 40px; left: calc(16.66% + 16px); right: calc(16.66% + 16px);
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), rgba(200,162,58,.2));
+    }
+    .step { text-align: center; position: relative; }
+    .step-num {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: var(--navy);
+      font-family: var(--f-display); font-size: 2rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+      box-shadow: 0 8px 32px rgba(200,162,58,.4);
+    }
+    .step-title { font-family: var(--f-display); font-size: 1.5rem; color: var(--white); margin-bottom: 12px; }
+    .step-text { color: rgba(255,255,255,.65); font-size: .95rem; line-height: 1.75; }
+
+    /* ════════════════════════════════
+       SOCIAL PROOF
+    ════════════════════════════════ */
+    #proof { padding: 120px 0; background: var(--paper); }
+    .proof-header { text-align: center; margin-bottom: 64px; }
+    .proof-label { font-size: .78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .proof-title { font-family: var(--f-display); font-size: clamp(2rem, 4vw, 3rem); color: var(--navy); margin-bottom: 12px; }
+    .rating-row {
+      display: flex; align-items: center; gap: 16px; justify-content: center; margin-bottom: 12px;
+    }
+    .rating-big { font-family: var(--f-display); font-size: 4rem; color: var(--navy); line-height: 1; }
+    .rating-stars { color: var(--gold); font-size: 1.4rem; letter-spacing: 3px; }
+    .rating-count { color: var(--muted); font-size: .88rem; font-weight: 600; }
+    .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .review {
+      background: var(--white);
+      border-radius: var(--r);
+      padding: 32px;
+      box-shadow: var(--sh);
+      border-top: 3px solid var(--gold);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .review:hover { transform: translateY(-8px); box-shadow: var(--sh2); }
+    .review-stars { color: var(--gold); font-size: .95rem; letter-spacing: 1px; margin-bottom: 14px; }
+    .review-text { color: var(--muted); font-size: .95rem; line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-av {
+      width: 46px; height: 46px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--f-display); font-size: 1.1rem; color: #fff; flex-shrink: 0;
+    }
+    .review-name { font-weight: 700; font-size: .92rem; }
+    .review-meta { font-size: .78rem; color: var(--muted); }
+
+    /* ════════════════════════════════
+       BUY CTA
+    ════════════════════════════════ */
+    #buy {
+      background: linear-gradient(135deg, #0a1e4a 0%, var(--deep) 100%);
+      padding: 120px 0;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    #newsletter::before {
+    #buy::before {
       content: '';
-      position: absolute;
-      top: -40%; left: -10%;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(200,162,58,0.09) 0%, transparent 70%);
-      pointer-events: none;
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(200,162,58,.12) 0%, transparent 65%);
     }
-    .nl-inner { position: relative; z-index: 1; }
-    .nl-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; }
-    .nl-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); color: var(--white); margin-bottom: 12px; }
-    .nl-sub { color: rgba(255,255,255,0.68); font-size: 1.08rem; margin-bottom: 44px; }
-    .nl-form { display: flex; gap: 12px; max-width: 500px; margin: 0 auto 16px; }
-    .nl-input {
-      flex: 1;
-      padding: 16px 24px;
-      border-radius: 50px;
-      border: 2px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.1);
-      color: var(--white);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .nl-input::placeholder { color: rgba(255,255,255,0.38); }
-    .nl-input:focus { border-color: var(--gold-light); }
-    .nl-fine { font-size: 0.8rem; color: rgba(255,255,255,0.38); }
-
-    /* ======================== FOOTER ======================== */
-    #footer { background: var(--text); color: rgba(255,255,255,0.65); padding: 80px 0 40px; }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 60px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 40px;
-    }
-    .footer-logo-name { font-family: var(--font-display); font-size: 2.4rem; color: var(--white); line-height: 1; }
-    .footer-logo-sub { font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
-    .footer-tagline { font-size: 0.9rem; line-height: 1.75; margin-top: 16px; max-width: 250px; }
-    .footer-socials { display: flex; gap: 10px; margin-top: 24px; }
-    .social-btn {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.07);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      transition: var(--transition);
-      color: rgba(255,255,255,0.6);
-    }
-    .social-btn:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
-    .pay-logos { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
-    .pay-logo {
-      padding: 5px 11px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 7px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.6);
-    }
-    .trust-badges { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
-    .trust-badge { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.5); }
-    .footer-col-title { font-weight: 700; color: var(--white); font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
-    .footer-links { display: flex; flex-direction: column; gap: 11px; }
-    .footer-links a { font-size: 0.88rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--white); }
-    .footer-bottom {
-      display: flex;
+    .buy-inner { position: relative; z-index: 2; }
+    .buy-label { font-size: .78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold2); margin-bottom: 16px; }
+    .buy-title { font-family: var(--f-display); font-size: clamp(2.2rem, 5vw, 4rem); color: var(--white); margin-bottom: 16px; line-height: 1.1; }
+    .buy-sub { color: rgba(255,255,255,.65); font-size: 1.1rem; margin-bottom: 48px; }
+    .buy-card {
+      display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 28px;
+      padding: 48px 64px;
+      gap: 24px;
+      backdrop-filter: blur(12px);
     }
-    .footer-copy { font-size: 0.85rem; }
-    .footer-legal { display: flex; gap: 24px; }
-    .footer-legal a { font-size: 0.85rem; transition: color 0.2s; }
-    .footer-legal a:hover { color: var(--white); }
+    .buy-price {
+      display: flex; align-items: flex-start; gap: 4px;
+    }
+    .buy-chf { font-size: 1.3rem; font-weight: 700; color: var(--gold2); margin-top: 10px; }
+    .buy-amount { font-family: var(--f-display); font-size: 5rem; color: var(--white); line-height: 1; }
+    .buy-vol { font-size: .88rem; color: rgba(255,255,255,.45); align-self: flex-end; margin-bottom: 8px; }
+    .buy-features {
+      display: flex; gap: 28px; flex-wrap: wrap; justify-content: center;
+    }
+    .buy-feat {
+      font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.55);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .buy-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .buy-guarantee {
+      font-size: .82rem; color: rgba(255,255,255,.35);
+      display: flex; align-items: center; gap: 6px;
+    }
 
-    /* ======================== RESPONSIVE ======================== */
-    @media (max-width: 1024px) {
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .products-grid { grid-template-columns: 1fr 1fr; }
-      .testi-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+    /* ════════════════════════════════
+       FOOTER
+    ════════════════════════════════ */
+    #foot {
+      background: #070f22;
+      padding: 40px 0;
+      text-align: center;
     }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      #hero { grid-template-columns: 1fr; min-height: auto; padding: 120px 0 64px; }
-      .hero-content { padding: 40px 24px; }
-      #hero-canvas { display: none; }
-      .features-grid { grid-template-columns: 1fr; }
-      .products-grid { grid-template-columns: 1fr 1fr; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      #about-canvas { height: 320px; }
-      .testi-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .nl-form { flex-direction: column; }
+    .foot-logo { font-family: var(--f-display); font-size: 2rem; color: var(--white); margin-bottom: 6px; }
+    .foot-logo span { color: var(--gold); }
+    .foot-copy { font-size: .82rem; color: rgba(255,255,255,.3); }
+
+    /* ════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════ */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-copy { padding: 120px 28px 40px; }
+      #canvas-col { height: 60vw; }
+      .steps { grid-template-columns: 1fr; gap: 32px; }
+      .steps::before { display: none; }
+      .reviews { grid-template-columns: 1fr; }
+      .panel-left, .panel-right { left: 24px; right: 24px; text-align: left; max-width: 100%; }
+      .buy-card { padding: 36px 28px; }
     }
-    @media (max-width: 480px) {
-      .products-grid { grid-template-columns: 1fr; }
-      .about-stats { grid-template-columns: repeat(3,1fr); }
+    @media (max-width: 600px) {
+      .hero-btns { flex-direction: column; }
+      .buy-actions { flex-direction: column; align-items: center; }
     }
+
+    /* ── GSAP initial states ── */
+    .fade-up { opacity: 0; transform: translateY(50px); }
+    .fade-left { opacity: 0; transform: translateX(-50px); }
+    .fade-right { opacity: 0; transform: translateX(50px); }
   </style>
 </head>
 <body>
 
-<!-- ======================== NAVIGATION ======================== -->
-<nav id="nav" aria-label="Hauptnavigation">
-  <div class="container">
+<!-- NAV -->
+<nav id="nav" aria-label="Navigation">
+  <div class="wrap">
     <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Glanz Startseite">
-        <span class="nav-logo-name">Glanz</span>
-        <span class="nav-logo-sub">Rohrreinigung</span>
-      </a>
-
-      <ul class="nav-links" role="list">
-        <li><a href="#products">Shop</a></li>
-        <li><a href="#features">Produkte</a></li>
-        <li><a href="#about">Über uns</a></li>
-        <li><a href="#testimonials">Bewertungen</a></li>
-        <li><a href="#newsletter">Kontakt</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <a href="/cart" class="cart-btn" aria-label="Warenkorb öffnen">
-          🛒 Warenkorb
-          <span class="cart-badge" aria-label="0 Artikel im Warenkorb">0</span>
-        </a>
-        <div class="hamburger" id="hamburgerBtn" role="button" tabindex="0" aria-label="Menü öffnen">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
+      <a href="/" class="nav-logo">Glanz<span>.</span></a>
+      <a href="#buy" class="btn btn-gold nav-cta">Jetzt kaufen →</a>
     </div>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigationsmenu">
-  <button class="mobile-close" id="mobileClose" aria-label="Menü schliessen">✕</button>
-  <a href="#products" class="mobile-link">Shop</a>
-  <a href="#features" class="mobile-link">Produkte</a>
-  <a href="#about" class="mobile-link">Über uns</a>
-  <a href="#testimonials" class="mobile-link">Bewertungen</a>
-  <a href="#newsletter" class="mobile-link">Kontakt</a>
-</div>
+<!-- HERO -->
+<section id="hero">
+  <!-- particles -->
+  <div class="hero-particles" aria-hidden="true" id="particles"></div>
 
-<!-- ======================== HERO ======================== -->
-<section id="hero" aria-label="Hero">
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
-
-  <div class="hero-content">
-    <div class="hero-tag">⭐ 4.9 / 5 Sterne &nbsp;·&nbsp; 2'400+ Kunden</div>
+  <div class="hero-copy">
+    <div class="hero-tag">⭐ 4.9 · 2'400+ Kunden</div>
 
     <h1 class="hero-title">
-      Für freie,<br>
-      <span>saubere</span><br>
-      Rohre.
+      Verstopfung<br>weg. In<br>
+      <em>15 Minuten.</em>
     </h1>
 
-    <p class="hero-subtitle">
-      Kraftvolle Abflussreiniger für Küche und Bad – schnell wirkend, sicher in der Anwendung und entwickelt für Schweizer Haushalte.
+    <p class="hero-sub">
+      Glanz Power-Gel löst Fett, Haare und Seifenreste schnell und sicher auf – ohne Werkzeug, ohne Wartezeit, ohne Kompromisse.
     </p>
 
-    <div class="hero-ctas">
-      <a href="#products" class="btn btn-primary">Jetzt einkaufen →</a>
-      <a href="#about" class="btn btn-outline">Mehr erfahren</a>
+    <div class="hero-btns">
+      <a href="#buy" class="btn btn-gold">Jetzt kaufen – CHF 14.90 →</a>
+      <a href="#scroll-section" class="btn btn-outline">Mehr erfahren</a>
     </div>
+
+    <ul class="hero-trust" aria-label="Vertrauensmerkmale">
+      <li class="hero-trust-item"><span class="dot">🇨🇭</span> Swiss Made</li>
+      <li class="hero-trust-item"><span class="dot">🚚</span> Gratis ab CHF 40</li>
+      <li class="hero-trust-item"><span class="dot">↩️</span> 30 Tage Rückgabe</li>
+    </ul>
   </div>
 
-  <div class="hero-scroll" aria-hidden="true">
-    <div class="hero-scroll-line"></div>
+  <div id="canvas-col">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-hint-bar"></div>
     <span>Scroll</span>
   </div>
 </section>
 
-<!-- ======================== TRUST BAR ======================== -->
-<section id="trust" aria-label="Vertrauensmerkmale">
-  <div class="trust-track" aria-hidden="true">
-    <div class="trust-item"><span class="trust-icon">🚚</span> Gratis Versand ab CHF 40</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">↩️</span> 30 Tage Rückgabe</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">🇨🇭</span> Schweizer Qualität</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">🔒</span> Sicher bezahlen</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">⚡</span> Express-Lieferung</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">🌿</span> Biologisch abbaubar</div>
-    <span class="trust-sep">✦</span>
-    <!-- duplicate for seamless loop -->
-    <div class="trust-item"><span class="trust-icon">🚚</span> Gratis Versand ab CHF 40</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">↩️</span> 30 Tage Rückgabe</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">🇨🇭</span> Schweizer Qualität</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">🔒</span> Sicher bezahlen</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">⚡</span> Express-Lieferung</div>
-    <span class="trust-sep">✦</span>
-    <div class="trust-item"><span class="trust-icon">🌿</span> Biologisch abbaubar</div>
-    <span class="trust-sep">✦</span>
-  </div>
-</section>
+<!-- SCROLL SECTION (sticky 3D) -->
+<div id="scroll-section">
+  <div id="scroll-sticky">
+    <canvas id="scroll-canvas" aria-hidden="true"></canvas>
 
-<!-- ======================== FEATURES ======================== -->
-<section id="features" class="section">
-  <div class="container">
-    <div class="sec-head">
-      <p class="sec-label">Warum Glanz?</p>
-      <h2 class="sec-title reveal">Unsere Stärken</h2>
-      <p class="sec-desc reveal">Entwickelt für Menschen, die zuverlässige Lösungen suchen – einfach, sicher, wirksam.</p>
+    <!-- Panel 1 – Power -->
+    <div class="panel panel-left" id="panel-1" style="top:50%;transform:translateY(-50%)">
+      <div class="panel-num">01</div>
+      <p class="panel-label">Die Formel</p>
+      <h2 class="panel-title">Power-Gel,<br>das wirklich wirkt</h2>
+      <p class="panel-text">Unsere konzentrierte Gel-Formel haftet an Rohrwänden und löst selbst hartnäckigste Ablagerungen in nur 15 Minuten auf.</p>
+      <ul class="panel-check">
+        <li>Löst Fett, Haare &amp; Seifenreste</li>
+        <li>Wirkt in 15 Minuten</li>
+        <li>Für alle Rohrmaterialien</li>
+      </ul>
     </div>
 
-    <div class="features-grid">
-      <article class="feature-card reveal">
-        <div class="feature-canvas-wrap">
-          <canvas id="feat-canvas-1" aria-hidden="true"></canvas>
-        </div>
-        <h3 class="feature-title">Schnell & Wirksam</h3>
-        <p class="feature-desc">Die Glanz Power-Formel löst Fett, Haare und Seifenreste innerhalb von Minuten auf – ohne langes Warten und ohne Schrubben.</p>
-      </article>
+    <!-- Panel 2 – Sicher -->
+    <div class="panel panel-right" id="panel-2" style="top:50%;transform:translateX(50px) translateY(-50%)">
+      <div class="panel-num">02</div>
+      <p class="panel-label">Sicherheit</p>
+      <h2 class="panel-title">Sicher für<br>Mensch &amp; Rohr</h2>
+      <p class="panel-text">Biologisch abbaubar und materialschonend – sicher für PVC, Kupfer, Keramik und alle gängigen Rohrsysteme.</p>
+      <ul class="panel-check">
+        <li>Biologisch abbaubar</li>
+        <li>Schonend für alle Rohre</li>
+        <li>Ohne schädliche Dämpfe</li>
+      </ul>
+    </div>
 
-      <article class="feature-card reveal" style="transition-delay:0.15s">
-        <div class="feature-canvas-wrap">
-          <canvas id="feat-canvas-2" aria-hidden="true"></canvas>
-        </div>
-        <h3 class="feature-title">Sicher & Schonend</h3>
-        <p class="feature-desc">Biologisch abbaubar und materialschonend – sicher für alle gängigen Rohrmaterialien, PVC, Kupfer und Keramik.</p>
-      </article>
-
-      <article class="feature-card reveal" style="transition-delay:0.3s">
-        <div class="feature-canvas-wrap">
-          <canvas id="feat-canvas-3" aria-hidden="true"></canvas>
-        </div>
-        <h3 class="feature-title">Einfach & Klar</h3>
-        <p class="feature-desc">Einfach einfüllen, kurz einwirken lassen, fertig. Keine komplizierte Anleitung, kein spezielles Werkzeug nötig.</p>
-      </article>
+    <!-- Panel 3 – Einfach -->
+    <div class="panel panel-center" id="panel-3" style="top:60%">
+      <p class="panel-label">Anwendung</p>
+      <h2 class="panel-title">Einfacher geht's nicht</h2>
+      <p class="panel-text">Einfüllen. 15 Minuten warten. Fertig. Keine Werkzeuge, kein Aufwand – freie Rohre auf Knopfdruck.</p>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ======================== PRODUCTS ======================== -->
-<section id="products" class="section">
-  <div class="container">
-    <div class="sec-head">
-      <p class="sec-label">Unser Sortiment</p>
-      <h2 class="sec-title reveal">Alle Produkte</h2>
-      <p class="sec-desc reveal">Von der Küche bis zum Bad – für jede Verstopfung die richtige Lösung.</p>
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div style="text-align:center;position:relative;z-index:2;">
+      <p class="how-label fade-up">So einfach</p>
+      <h2 class="how-title fade-up">In 3 Schritten zum freien Abfluss</h2>
     </div>
-
-    <div class="filter-tabs" role="tablist" aria-label="Produktfilter">
-      <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">Alle</button>
-      <button class="filter-tab" data-filter="abfluss" role="tab" aria-selected="false">Abfluss</button>
-      <button class="filter-tab" data-filter="kueche" role="tab" aria-selected="false">Küche</button>
-      <button class="filter-tab" data-filter="bad" role="tab" aria-selected="false">Bad</button>
-      <button class="filter-tab" data-filter="power" role="tab" aria-selected="false">Power</button>
-    </div>
-
-    <div class="products-grid" id="productsGrid">
-
-      <!-- Product 1 -->
-      <article class="product-card reveal" data-category="abfluss power">
-        <span class="prod-badge">Bestseller</span>
-        <div class="product-img">
-          <div class="bottle">
-            <div class="bottle-cap" style="background:var(--gold);"></div>
-            <div class="bottle-body" style="background:linear-gradient(160deg,#15336B,#1048A0);">
-              <span class="bottle-label">Glanz<br>Power</span>
-            </div>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="prod-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-          <h3 class="product-name">Glanz Power-Gel</h3>
-          <p class="product-desc">Extra starkes Gel für hartnäckige Verstopfungen. Wirkt zuverlässig in 15 Minuten.</p>
-          <div class="product-meta">
-            <div class="product-price">CHF 14.90 <small>/ 750ml</small></div>
-            <button class="add-cart" aria-label="Glanz Power-Gel in den Warenkorb legen">🛒 Kaufen</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Product 2 -->
-      <article class="product-card reveal" data-category="kueche" style="transition-delay:0.1s">
-        <div class="product-img">
-          <div class="bottle">
-            <div class="bottle-cap" style="background:var(--navy);"></div>
-            <div class="bottle-body" style="background:linear-gradient(160deg,#C8A23A,#E8C96A);">
-              <span class="bottle-label" style="color:var(--navy)">Glanz<br>Küche</span>
-            </div>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="prod-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-          <h3 class="product-name">Glanz Küchen-Reiniger</h3>
-          <p class="product-desc">Löst Fett und Speisereste schnell und zuverlässig – für alle Küchenabflüsse.</p>
-          <div class="product-meta">
-            <div class="product-price">CHF 12.90 <small>/ 500ml</small></div>
-            <button class="add-cart" aria-label="Glanz Küchen-Reiniger in den Warenkorb">🛒 Kaufen</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Product 3 -->
-      <article class="product-card reveal" data-category="bad" style="transition-delay:0.2s">
-        <div class="product-img">
-          <div class="bottle">
-            <div class="bottle-cap" style="background:var(--gold);"></div>
-            <div class="bottle-body" style="background:linear-gradient(160deg,#1048A0,#3a7ccb);">
-              <span class="bottle-label">Glanz<br>Bad</span>
-            </div>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="prod-stars" aria-label="4 von 5 Sternen">★★★★☆</div>
-          <h3 class="product-name">Glanz Bad-Löser</h3>
-          <p class="product-desc">Speziell für Haar- und Seifenreste in Dusche, Badewanne und Lavabo.</p>
-          <div class="product-meta">
-            <div class="product-price">CHF 11.90 <small>/ 500ml</small></div>
-            <button class="add-cart" aria-label="Glanz Bad-Löser in den Warenkorb">🛒 Kaufen</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Product 4 -->
-      <article class="product-card reveal" data-category="power abfluss" style="transition-delay:0.1s">
-        <span class="prod-badge" style="background:var(--deep);color:white;">Neu</span>
-        <div class="product-img">
-          <div class="bottle">
-            <div class="bottle-cap" style="background:var(--gold-light);"></div>
-            <div class="bottle-body" style="background:linear-gradient(160deg,#0a2050,#15336B);">
-              <span class="bottle-label">Glanz<br>Ultra</span>
-            </div>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="prod-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-          <h3 class="product-name">Glanz Ultra-Konzentrat</h3>
-          <p class="product-desc">Hochkonzentrierte Formel für schwerste Verstopfungen – auch als 2-Liter-Kanister erhältlich.</p>
-          <div class="product-meta">
-            <div class="product-price">CHF 24.90 <small>/ 1L</small></div>
-            <button class="add-cart" aria-label="Glanz Ultra-Konzentrat in den Warenkorb">🛒 Kaufen</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Product 5 -->
-      <article class="product-card reveal" data-category="kueche bad" style="transition-delay:0.2s">
-        <div class="product-img">
-          <div class="bottle">
-            <div class="bottle-cap" style="background:var(--gold);"></div>
-            <div class="bottle-body" style="background:linear-gradient(160deg,#2d7a4f,#3ea668);">
-              <span class="bottle-label">Glanz<br>Bio</span>
-            </div>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="prod-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-          <h3 class="product-name">Glanz Bio-Reiniger</h3>
-          <p class="product-desc">100% biologisch abbaubar – genauso wirksam, mit gutem Gewissen.</p>
-          <div class="product-meta">
-            <div class="product-price">CHF 13.90 <small>/ 500ml</small></div>
-            <button class="add-cart" aria-label="Glanz Bio-Reiniger in den Warenkorb">🛒 Kaufen</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Product 6 -->
-      <article class="product-card reveal" data-category="abfluss power kueche bad" style="transition-delay:0.3s">
-        <span class="prod-badge">Sparset</span>
-        <div class="product-img">
-          <div class="bottle">
-            <div class="bottle-cap" style="background:white;"></div>
-            <div class="bottle-body" style="background:linear-gradient(160deg,#15336B,#C8A23A);width:80px;">
-              <span class="bottle-label">Glanz<br>Set 3×</span>
-            </div>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="prod-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-          <h3 class="product-name">Glanz Vorteilsset 3×</h3>
-          <p class="product-desc">Power-Gel, Küchen- und Bad-Reiniger im Sparset – perfekt für den ganzen Haushalt.</p>
-          <div class="product-meta">
-            <div class="product-price">CHF 34.90 <small>/ Set</small></div>
-            <button class="add-cart" aria-label="Glanz Vorteilsset in den Warenkorb">🛒 Kaufen</button>
-          </div>
-        </div>
-      </article>
-
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h3 class="step-title">Eingiessen</h3>
+        <p class="step-text">Einfach den Inhalt direkt in den Abfluss giessen. Kein Verdünnen, kein Mischen – direkt anwenden.</p>
+      </div>
+      <div class="step fade-up" style="--delay:.12s">
+        <div class="step-num">2</div>
+        <h3 class="step-title">Einwirken</h3>
+        <p class="step-text">15 Minuten warten. Das Power-Gel arbeitet sich durch alle Verstopfungen und löst sie zuverlässig auf.</p>
+      </div>
+      <div class="step fade-up" style="--delay:.24s">
+        <div class="step-num">3</div>
+        <h3 class="step-title">Spülen</h3>
+        <p class="step-text">Mit heissem Wasser nachspülen – und der Abfluss läuft wieder wie neu. Einfach, sauber, erledigt.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ======================== ABOUT ======================== -->
-<section id="about" class="section">
-  <div class="container">
-    <div class="about-grid">
-
-      <div class="reveal-left">
-        <p class="about-label">Über Glanz</p>
-        <h2 class="about-title">Schweizer Qualität,<br>die man spürt.</h2>
-        <p class="about-text">
-          Glanz entstand aus einer einfachen Beobachtung: Viele Haushaltsprodukte sind zu kompliziert, zu aggressiv oder schlicht wirkungslos. Wir haben uns zum Ziel gesetzt, das zu ändern.
-        </p>
-        <p class="about-text">
-          Unsere Reiniger werden in der Schweiz entwickelt und getestet – mit Formeln, die tatsächlich funktionieren. Klar, sicher und ohne unnötigen Chemie-Wildwuchs.
-        </p>
-        <a href="#products" class="btn btn-navy" style="margin-top:8px">Produkte entdecken →</a>
-
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-num">2'400+</div>
-            <div class="stat-label">Zufriedene Kunden</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">4.9★</div>
-            <div class="stat-label">Durchschnittsnote</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">6</div>
-            <div class="stat-label">Produkte</div>
-          </div>
+<!-- SOCIAL PROOF -->
+<section id="proof">
+  <div class="wrap">
+    <div class="proof-header">
+      <p class="proof-label fade-up">Kundenstimmen</p>
+      <div class="rating-row fade-up">
+        <div class="rating-big">4.9</div>
+        <div>
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-count">247 verifizierte Bewertungen</div>
         </div>
       </div>
-
-      <div class="reveal-right">
-        <canvas id="about-canvas" aria-hidden="true"></canvas>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ======================== TESTIMONIALS ======================== -->
-<section id="testimonials" class="section">
-  <div class="container">
-    <div class="testi-head">
-      <p class="sec-label" style="color:var(--gold-light)">Was Kunden sagen</p>
-      <div class="avg-rating reveal">
-        <div class="avg-num">4.9</div>
-        <div class="avg-stars-col">
-          <div class="avg-stars">★★★★★</div>
-          <div class="avg-count">Basierend auf 247 Bewertungen</div>
-        </div>
-      </div>
-      <h2 class="sec-title reveal" style="color:var(--white)">Über 2'400 zufriedene Kunden</h2>
+      <h2 class="proof-title fade-up">Über 2'400 zufriedene Kunden</h2>
     </div>
 
-    <div class="testi-grid">
-
-      <article class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Endlich ein Abflussreiniger, der wirklich hilft! Die Dusche war seit Wochen verstopft – nach 20 Minuten mit Glanz Power-Gel lief alles wieder einwandfrei."</p>
-        <div class="testi-author">
-          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--gold),var(--deep))">L</div>
+    <div class="reviews">
+      <article class="review fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Endlich ein Produkt das wirklich hält was es verspricht! Dusche war seit Wochen verstopft – nach 20 Minuten lief alles wieder einwandfrei."</p>
+        <div class="review-author">
+          <div class="review-av" style="background:linear-gradient(135deg,#c8a23a,#0d3da8)">L</div>
           <div>
-            <div class="testi-name">Laura M.</div>
-            <div class="testi-loc">Zürich</div>
-            <div class="testi-prod">Glanz Power-Gel</div>
+            <div class="review-name">Laura M.</div>
+            <div class="review-meta">Zürich · verifiziert</div>
           </div>
         </div>
       </article>
 
-      <article class="testi-card reveal" style="transition-delay:0.15s">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Super einfach in der Anwendung und riecht nicht nach Chemielabor. Unser Küchenabfluss ist wieder perfekt – bestelle regelmässig nach!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--navy),var(--gold))">P</div>
+      <article class="review fade-up" style="--delay:.1s">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Super einfach, kein unangenehmer Geruch und vor allem: es funktioniert! Bestelle bereits zum vierten Mal nach."</p>
+        <div class="review-author">
+          <div class="review-av" style="background:linear-gradient(135deg,#0d3da8,#1a5cd4)">P</div>
           <div>
-            <div class="testi-name">Peter K.</div>
-            <div class="testi-loc">Bern</div>
-            <div class="testi-prod">Glanz Küchen-Reiniger</div>
+            <div class="review-name">Peter K.</div>
+            <div class="review-meta">Bern · verifiziert</div>
           </div>
         </div>
       </article>
 
-      <article class="testi-card reveal" style="transition-delay:0.3s">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Habe das Vorteilsset für Bad und Küche bestellt. Lieferung blitzschnell, Produkte top. Absolut empfehlenswert für jeden Schweizer Haushalt!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar" style="background:linear-gradient(135deg,#2d7a4f,var(--deep))">S</div>
+      <article class="review fade-up" style="--delay:.2s">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Lieferung am nächsten Tag, Produkt überzeugt auf Anhieb. Küchenabfluss lief trotz Fettablagerungen sofort wieder frei."</p>
+        <div class="review-author">
+          <div class="review-av" style="background:linear-gradient(135deg,#2d7a4f,#0d3da8)">S</div>
           <div>
-            <div class="testi-name">Sandra B.</div>
-            <div class="testi-loc">Basel</div>
-            <div class="testi-prod">Glanz Vorteilsset 3×</div>
+            <div class="review-name">Sandra B.</div>
+            <div class="review-meta">Basel · verifiziert</div>
           </div>
         </div>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- ======================== NEWSLETTER ======================== -->
-<section id="newsletter" class="section">
-  <div class="container">
-    <div class="nl-inner">
-      <p class="nl-label">Newsletter</p>
-      <h2 class="nl-title reveal">10% auf die erste Bestellung</h2>
-      <p class="nl-sub reveal">Melde dich an und erhalte sofort deinen Rabattcode – plus Tipps für saubere Rohre.</p>
+<!-- BUY -->
+<section id="buy">
+  <div class="wrap">
+    <div class="buy-inner">
+      <p class="buy-label fade-up">Jetzt bestellen</p>
+      <h2 class="buy-title fade-up">Freie Rohre.<br>Garantiert.</h2>
+      <p class="buy-sub fade-up">Schnelle Lieferung in die Schweiz. 30 Tage Geld-zurück-Garantie.</p>
 
-      <form class="nl-form reveal" id="nlForm" novalidate>
-        <label for="nlEmail" class="sr-only">E-Mail-Adresse</label>
-        <input
-          type="email"
-          id="nlEmail"
-          class="nl-input"
-          placeholder="deine@email.ch"
-          required
-          autocomplete="email"
-          aria-label="E-Mail-Adresse für Newsletter"
-        >
-        <button type="submit" class="btn btn-primary">Jetzt sparen →</button>
-      </form>
-
-      <p class="nl-fine">Kein Spam, jederzeit abmeldbar. Datenschutz wird grossgeschrieben.</p>
+      <div class="buy-card fade-up">
+        <div class="buy-price">
+          <span class="buy-chf">CHF</span>
+          <span class="buy-amount">14.90</span>
+          <span class="buy-vol">750 ml</span>
+        </div>
+        <div class="buy-features">
+          <span class="buy-feat">🚚 Gratis ab CHF 40</span>
+          <span class="buy-feat">↩️ 30 Tage Rückgabe</span>
+          <span class="buy-feat">🇨🇭 Swiss Made</span>
+          <span class="buy-feat">🌿 Bio-abbaubar</span>
+        </div>
+        <div class="buy-actions">
+          <a href="#" class="btn btn-gold" style="font-size:1.1rem;padding:18px 48px">🛒 In den Warenkorb</a>
+        </div>
+        <p class="buy-guarantee">🔒 Sicherer Checkout · Zahlung per TWINT, Visa, PayPal</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ======================== FOOTER ======================== -->
-<footer id="footer" aria-label="Footer">
-  <div class="container">
-    <div class="footer-grid">
-
-      <div>
-        <div class="footer-logo-name">Glanz</div>
-        <div class="footer-logo-sub">Rohrreinigung</div>
-        <p class="footer-tagline">Für freie, saubere Rohre – entwickelt und getestet in der Schweiz.</p>
-
-        <div class="footer-socials" aria-label="Social Media">
-          <a href="https://instagram.com/glanz.ch" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer">📸</a>
-          <a href="https://facebook.com/glanz.ch" class="social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer">👥</a>
-          <a href="https://tiktok.com/@glanz.ch" class="social-btn" aria-label="TikTok" target="_blank" rel="noopener noreferrer">🎵</a>
-        </div>
-
-        <div class="pay-logos" aria-label="Akzeptierte Zahlungsmethoden">
-          <span class="pay-logo">VISA</span>
-          <span class="pay-logo">Mastercard</span>
-          <span class="pay-logo">PayPal</span>
-          <span class="pay-logo">TWINT</span>
-          <span class="pay-logo">PostFinance</span>
-        </div>
-
-        <div class="trust-badges">
-          <span class="trust-badge">🔒 SSL gesichert</span>
-          <span class="trust-badge">🇨🇭 Swiss Made</span>
-        </div>
-      </div>
-
-      <div>
-        <p class="footer-col-title">Shop</p>
-        <ul class="footer-links" role="list">
-          <li><a href="#products">Alle Produkte</a></li>
-          <li><a href="#products">Power-Gel</a></li>
-          <li><a href="#products">Küchen-Reiniger</a></li>
-          <li><a href="#products">Bad-Löser</a></li>
-          <li><a href="#products">Vorteilssets</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="footer-col-title">Informationen</p>
-        <ul class="footer-links" role="list">
-          <li><a href="#about">Über Glanz</a></li>
-          <li><a href="#testimonials">Bewertungen</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Versand & Rückgabe</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="footer-col-title">Kontakt</p>
-        <ul class="footer-links" role="list">
-          <li><a href="mailto:hallo@glanz.ch">hallo@glanz.ch</a></li>
-          <li><a href="tel:+41441234567">+41 44 123 45 67</a></li>
-          <li>Schweiz</li>
-        </ul>
-        <p class="footer-col-title" style="margin-top:24px">Öffnungszeiten</p>
-        <ul class="footer-links" role="list">
-          <li>Mo – Fr: 9 – 17 Uhr</li>
-          <li><a href="#">Live-Chat</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2025 Glanz – Alle Rechte vorbehalten</p>
-      <nav class="footer-legal" aria-label="Rechtliche Links">
-        <a href="#">Datenschutz</a>
-        <a href="#">Impressum</a>
-        <a href="#">AGB</a>
-        <a href="#">Cookie-Einstellungen</a>
-      </nav>
-    </div>
+<!-- FOOTER -->
+<footer id="foot">
+  <div class="wrap">
+    <div class="foot-logo">Glanz<span>.</span></div>
+    <p class="foot-copy">© 2025 Glanz – Alle Rechte vorbehalten</p>
   </div>
 </footer>
 
-<!-- ======================== JAVASCRIPT ======================== -->
 <script>
 (function () {
   'use strict';
 
-  /* ── NAV SCROLL ── */
+  /* ──────────────────────────────────────
+     PARTICLES
+  ────────────────────────────────────── */
+  const pContainer = document.getElementById('particles');
+  for (let i = 0; i < 28; i++) {
+    const s = document.createElement('span');
+    s.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      --d:${5+Math.random()*7}s;
+      --delay:${Math.random()*5}s;
+      width:${2+Math.random()*5}px;
+      height:${2+Math.random()*5}px;
+      opacity:${0.2+Math.random()*0.5};
+    `;
+    pContainer.appendChild(s);
+  }
+
+  /* ──────────────────────────────────────
+     NAV SCROLL
+  ────────────────────────────────────── */
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
+    nav.classList.toggle('solid', window.scrollY > 60);
   }, { passive: true });
 
-  /* ── MOBILE MENU ── */
-  const hamburger = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileClose = document.getElementById('mobileClose');
-  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-  hamburger.addEventListener('keydown', e => { if (e.key === 'Enter') mobileMenu.classList.add('open'); });
-  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  document.querySelectorAll('.mobile-link').forEach(l => {
-    l.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
-
-  /* ── SCROLL REVEAL ── */
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
-
-  /* ── PRODUCT FILTER ── */
-  document.querySelectorAll('.filter-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.filter-tab').forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      const f = tab.dataset.filter;
-      document.querySelectorAll('.product-card').forEach(card => {
-        card.style.display = (f === 'all' || card.dataset.category.includes(f)) ? '' : 'none';
-      });
-    });
-  });
-
-  /* ── PRODUCT TILT ── */
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = `perspective(900px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateZ(6px)`;
-    });
-    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-  });
-
-  /* ── NEWSLETTER ── */
-  document.getElementById('nlForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
-    btn.textContent = '✓ Eingetragen!';
-    btn.style.background = '#2d7a4f';
-    btn.style.color = '#fff';
-    setTimeout(() => {
-      btn.textContent = 'Jetzt sparen →';
-      btn.style.background = '';
-      btn.style.color = '';
-      e.target.reset();
-    }, 3500);
-  });
-
-  /* ── ADD TO CART FEEDBACK ── */
-  document.querySelectorAll('.add-cart').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const orig = btn.textContent;
-      btn.textContent = '✓ Hinzugefügt';
-      btn.style.background = '#2d7a4f';
-      btn.style.color = '#fff';
-      setTimeout(() => {
-        btn.textContent = orig;
-        btn.style.background = '';
-        btn.style.color = '';
-      }, 2000);
-    });
-  });
-
-  /* ═══════════════════════════════════
-     THREE.JS SCENES
-  ═══════════════════════════════════ */
+  /* ──────────────────────────────────────
+     THREE.JS SHARED HELPERS
+  ────────────────────────────────────── */
   if (typeof THREE === 'undefined') return;
 
-  function makeRenderer(canvas) {
-    const r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    r.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    r.setClearColor(0x000000, 0);
+  function makeRenderer(canvas, alpha) {
+    const r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: !!alpha });
+    r.setPixelRatio(Math.min(devicePixelRatio, 2));
+    r.shadowMap.enabled = true;
+    r.shadowMap.type = THREE.PCFSoftShadowMap;
+    r.toneMapping = THREE.ACESFilmicToneMapping;
+    r.toneMappingExposure = 1.1;
+    if (alpha) r.setClearColor(0x000000, 0);
     return r;
   }
 
-  /* ── HERO SCENE ── */
-  (function heroScene() {
-    const canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
+  /* ── Build a photo-realistic can ── */
+  function buildCan(scene, opts = {}) {
+    const group = new THREE.Group();
 
-    const renderer = makeRenderer(canvas);
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-    camera.position.set(0, 0, 5.5);
+    const R  = opts.R  || 0.95;   // radius
+    const H  = opts.H  || 2.6;    // height
+    const LH = opts.LH || 2.0;    // label height
 
-    /* Core sphere */
-    const sphere = new THREE.Mesh(
-      new THREE.SphereGeometry(1.15, 64, 64),
-      new THREE.MeshPhongMaterial({
-        color: 0x1048A0,
-        emissive: 0x08204a,
-        specular: 0xC8A23A,
-        shininess: 100
-      })
-    );
-    scene.add(sphere);
+    /* ── Label canvas texture ── */
+    const lc = document.createElement('canvas');
+    lc.width = 1024; lc.height = 512;
+    const ctx = lc.getContext('2d');
 
-    /* Rings */
-    const ringDefs = [
-      { r: 1.9,  tube: 0.045, col: 0xC8A23A, em: 0x6a4010, rx: Math.PI / 2.5, rz: 0 },
-      { r: 2.55, tube: 0.034, col: 0xE8C96A, em: 0x604e10, rx: Math.PI / 3.2, rz: 0.6 },
-      { r: 1.65, tube: 0.028, col: 0xDCE9FB, em: 0x3a5080, rx: Math.PI / 1.9, rz: -0.4 },
-    ];
-    const rings = ringDefs.map(d => {
-      const m = new THREE.Mesh(
-        new THREE.TorusGeometry(d.r, d.tube, 16, 120),
-        new THREE.MeshPhongMaterial({ color: d.col, emissive: d.em })
-      );
-      m.rotation.set(d.rx, 0, d.rz);
-      scene.add(m);
-      return m;
+    // Background gradient
+    const grd = ctx.createLinearGradient(0, 0, 1024, 0);
+    grd.addColorStop(0,    '#0a1e4a');
+    grd.addColorStop(0.35, '#0d3da8');
+    grd.addColorStop(0.65, '#0d3da8');
+    grd.addColorStop(1,    '#0a1e4a');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, 1024, 512);
+
+    // Gold shimmer band
+    const band = ctx.createLinearGradient(0, 0, 1024, 0);
+    band.addColorStop(0,   'rgba(200,162,58,0)');
+    band.addColorStop(0.4, 'rgba(200,162,58,0.18)');
+    band.addColorStop(0.6, 'rgba(232,201,106,0.28)');
+    band.addColorStop(1,   'rgba(200,162,58,0)');
+    ctx.fillStyle = band;
+    ctx.fillRect(0, 0, 1024, 512);
+
+    // Top gold stripe
+    const tStripe = ctx.createLinearGradient(0, 0, 1024, 0);
+    tStripe.addColorStop(0,   '#8a6b1a');
+    tStripe.addColorStop(0.5, '#e8c96a');
+    tStripe.addColorStop(1,   '#8a6b1a');
+    ctx.fillStyle = tStripe;
+    ctx.fillRect(0, 0, 1024, 26);
+
+    // Bottom gold stripe
+    ctx.fillStyle = tStripe;
+    ctx.fillRect(0, 486, 1024, 26);
+
+    // Mid accent stripe
+    ctx.fillStyle = 'rgba(200,162,58,0.22)';
+    ctx.fillRect(0, 248, 1024, 16);
+
+    // Diagonal shine
+    ctx.save();
+    ctx.globalAlpha = 0.07;
+    for (let x = -200; x < 1200; x += 80) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0); ctx.lineTo(x + 150, 512);
+      ctx.lineWidth = 40;
+      ctx.strokeStyle = '#fff';
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    // Logo – "Glanz"
+    ctx.save();
+    ctx.shadowColor = 'rgba(0,0,0,0.5)';
+    ctx.shadowBlur = 16;
+    ctx.font = 'bold 130px Lobster, serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const logoGrd = ctx.createLinearGradient(512, 140, 512, 270);
+    logoGrd.addColorStop(0, '#f0d878');
+    logoGrd.addColorStop(0.5, '#c8a23a');
+    logoGrd.addColorStop(1, '#9a7220');
+    ctx.fillStyle = logoGrd;
+    ctx.fillText('Glanz', 512, 180);
+    ctx.restore();
+
+    // Tagline
+    ctx.save();
+    ctx.font = '600 36px Baloo\\ 2, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    ctx.letterSpacing = '6px';
+    ctx.fillText('POWER-GEL', 512, 270);
+    ctx.restore();
+
+    // Volume badge
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(512, 370, 54, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(200,162,58,0.18)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(200,162,58,0.55)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.font = 'bold 32px Baloo\\ 2, sans-serif';
+    ctx.fillStyle = '#e8c96a';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('750 ml', 512, 374);
+    ctx.restore();
+
+    // "15 Min" burst
+    ctx.save();
+    ctx.translate(820, 200);
+    ctx.rotate(-0.3);
+    for (let i = 0; i < 8; i++) {
+      ctx.save();
+      ctx.rotate(i * Math.PI / 4);
+      ctx.beginPath();
+      ctx.moveTo(0, 38);
+      ctx.lineTo(6, 52);
+      ctx.lineTo(0, 50);
+      ctx.lineTo(-6, 52);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(200,162,58,0.7)';
+      ctx.fill();
+      ctx.restore();
+    }
+    ctx.beginPath();
+    ctx.arc(0, 0, 36, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(200,162,58,0.88)';
+    ctx.fill();
+    ctx.font = 'bold 20px Baloo\\ 2, sans-serif';
+    ctx.fillStyle = '#0a1e4a';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('15 MIN', 0, -4);
+    ctx.fillText('POWER', 0, 14);
+    ctx.restore();
+
+    // Recycling symbol (simple leaf icons)
+    ctx.font = '22px sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.textAlign = 'left';
+    ctx.fillText('🌿 Bio', 96, 395);
+
+    const labelTex = new THREE.CanvasTexture(lc);
+    labelTex.needsUpdate = true;
+
+    /* ── Can body ── */
+    const bodyGeo = new THREE.CylinderGeometry(R, R, H, 64, 1, true);
+    const bodyMat = new THREE.MeshStandardMaterial({
+      map: labelTex,
+      roughness: 0.35,
+      metalness: 0.55,
+      envMapIntensity: 1.2
+    });
+    const body = new THREE.Mesh(bodyGeo, bodyMat);
+    body.castShadow = true;
+    group.add(body);
+
+    /* ── Metal material shared ── */
+    const metalMat = new THREE.MeshStandardMaterial({
+      color: 0xc0c8d8,
+      roughness: 0.25,
+      metalness: 0.9,
     });
 
-    /* Particles */
-    const N = 220;
-    const pos = new Float32Array(N * 3);
-    for (let i = 0; i < N; i++) {
-      const r = 2.8 + Math.random() * 2.2;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      pos[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
-      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      pos[i * 3 + 2] = r * Math.cos(phi);
-    }
-    const pGeo = new THREE.BufferGeometry();
-    pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    const particles = new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xE8C96A, size: 0.055, sizeAttenuation: true }));
-    scene.add(particles);
+    /* ── Top lid ── */
+    const topGeo = new THREE.CylinderGeometry(R * 0.88, R, 0.1, 64);
+    const top = new THREE.Mesh(topGeo, metalMat);
+    top.position.y = H / 2 + 0.05;
+    top.castShadow = true;
+    group.add(top);
+
+    /* ── Top cap dome ── */
+    const domeGeo = new THREE.CylinderGeometry(R * 0.6, R * 0.88, 0.12, 64);
+    const dome = new THREE.Mesh(domeGeo, metalMat.clone());
+    dome.position.y = H / 2 + 0.17;
+    group.add(dome);
+
+    /* ── Nozzle ── */
+    const nozzleGeo = new THREE.CylinderGeometry(0.14, 0.18, 0.28, 32);
+    const nozzle = new THREE.Mesh(nozzleGeo, metalMat.clone());
+    nozzle.position.y = H / 2 + 0.34;
+    group.add(nozzle);
+
+    /* ── Nozzle cap ── */
+    const capGeo = new THREE.SphereGeometry(0.15, 24, 16);
+    const capMat = new THREE.MeshStandardMaterial({ color: 0xc8a23a, roughness: 0.3, metalness: 0.8 });
+    const cap = new THREE.Mesh(capGeo, capMat);
+    cap.scale.y = 0.65;
+    cap.position.y = H / 2 + 0.52;
+    group.add(cap);
+
+    /* ── Bottom ── */
+    const botGeo = new THREE.CylinderGeometry(R * 0.92, R, 0.08, 64);
+    const bot = new THREE.Mesh(botGeo, metalMat.clone());
+    bot.position.y = -H / 2 - 0.04;
+    bot.castShadow = true;
+    group.add(bot);
+
+    /* ── Bottom indent ── */
+    const indentGeo = new THREE.CylinderGeometry(R * 0.5, R * 0.5, 0.06, 64, 1, false, 0, Math.PI * 2);
+    const indent = new THREE.Mesh(indentGeo, metalMat.clone());
+    indent.position.y = -H / 2 + 0.03;
+    group.add(indent);
+
+    /* ── Highlight band ── */
+    const hBandGeo = new THREE.CylinderGeometry(R + 0.001, R + 0.001, 0.05, 64, 1, true);
+    const hBandMat = new THREE.MeshStandardMaterial({
+      color: 0xe8c96a, roughness: 0.1, metalness: 1, transparent: true, opacity: 0.7
+    });
+    const hBand1 = new THREE.Mesh(hBandGeo, hBandMat);
+    hBand1.position.y = H / 2 - 0.08;
+    group.add(hBand1);
+    const hBand2 = new THREE.Mesh(hBandGeo, hBandMat.clone());
+    hBand2.position.y = -H / 2 + 0.08;
+    group.add(hBand2);
+
+    scene.add(group);
+    return group;
+  }
+
+  /* ──────────────────────────────────────
+     HERO SCENE
+  ────────────────────────────────────── */
+  (function heroScene() {
+    const canvas = document.getElementById('hero-canvas');
+    const col = document.getElementById('canvas-col');
+    if (!canvas || !col) return;
+
+    const renderer = makeRenderer(canvas, true);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+    camera.position.set(0, 0.3, 7);
+
+    /* Env map (simple gradient sky) */
+    const pmGen = new THREE.PMREMGenerator(renderer);
+    pmGen.compileCubemapShader();
 
     /* Lights */
-    scene.add(new THREE.AmbientLight(0xffffff, 0.3));
-    const dir = new THREE.DirectionalLight(0xffffff, 1.1);
-    dir.position.set(5, 6, 5);
-    scene.add(dir);
-    const gold = new THREE.PointLight(0xC8A23A, 2, 20);
-    gold.position.set(-3, 2, 4);
-    scene.add(gold);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambient);
+
+    const key = new THREE.DirectionalLight(0xffffff, 2.2);
+    key.position.set(4, 6, 5);
+    key.castShadow = true;
+    scene.add(key);
+
+    const fill = new THREE.DirectionalLight(0x4488ff, 0.8);
+    fill.position.set(-5, 2, 2);
+    scene.add(fill);
+
+    const rim = new THREE.DirectionalLight(0xffd080, 1.4);
+    rim.position.set(0, 3, -5);
+    scene.add(rim);
+
+    const goldPL = new THREE.PointLight(0xc8a23a, 3, 18);
+    goldPL.position.set(-3, 2, 4);
+    scene.add(goldPL);
+
+    /* Ground reflection plane */
+    const planeGeo = new THREE.PlaneGeometry(8, 8);
+    const planeMat = new THREE.MeshStandardMaterial({
+      color: 0x1048A0, roughness: 0.2, metalness: 0.7,
+      transparent: true, opacity: 0.35
+    });
+    const plane = new THREE.Mesh(planeGeo, planeMat);
+    plane.rotation.x = -Math.PI / 2;
+    plane.position.y = -1.7;
+    plane.receiveShadow = true;
+    scene.add(plane);
+
+    /* Particles */
+    const N = 180;
+    const pPos = new Float32Array(N * 3);
+    for (let i = 0; i < N; i++) {
+      pPos[i * 3]     = (Math.random() - .5) * 14;
+      pPos[i * 3 + 1] = (Math.random() - .5) * 10;
+      pPos[i * 3 + 2] = (Math.random() - .5) * 10 - 2;
+    }
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const pMat = new THREE.PointsMaterial({ color: 0xc8a23a, size: 0.055, sizeAttenuation: true, transparent: true, opacity: .7 });
+    scene.add(new THREE.Points(pGeo, pMat));
+
+    /* The can */
+    const can = buildCan(scene);
+    can.position.y = 0.2;
+
+    /* intro animation */
+    can.scale.set(0, 0, 0);
+    can.rotation.y = -1.5;
+    setTimeout(() => {
+      const start = performance.now();
+      const dur = 1400;
+      function intro(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const e = 1 - Math.pow(1 - p, 4);
+        can.scale.setScalar(e);
+        can.rotation.y = -1.5 + e * 1.5;
+        if (p < 1) requestAnimationFrame(intro);
+      }
+      requestAnimationFrame(intro);
+    }, 300);
 
     /* Mouse parallax */
     let mx = 0, my = 0;
     window.addEventListener('mousemove', e => {
-      mx = (e.clientX / window.innerWidth - 0.5) * 2;
-      my = (e.clientY / window.innerHeight - 0.5) * 2;
+      mx = (e.clientX / innerWidth - .5) * 2;
+      my = (e.clientY / innerHeight - .5) * 2;
     }, { passive: true });
 
     /* Resize */
-    const heroEl = document.getElementById('hero');
     function resize() {
-      const w = heroEl.offsetWidth * 0.5;
-      const h = heroEl.offsetHeight;
+      const w = col.offsetWidth;
+      const h = col.offsetHeight;
       if (!w || !h) return;
       renderer.setSize(w, h);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
     }
     resize();
-    new ResizeObserver(resize).observe(heroEl);
+    new ResizeObserver(resize).observe(col);
 
     const clock = new THREE.Clock();
-    (function animate() {
-      requestAnimationFrame(animate);
+    (function loop() {
+      requestAnimationFrame(loop);
       const t = clock.getElapsedTime();
-      sphere.rotation.y = t * 0.28;
-      sphere.rotation.x = Math.sin(t * 0.4) * 0.18;
-      sphere.scale.setScalar(1 + Math.sin(t * 0.85) * 0.035);
-      rings[0].rotation.z = t * 0.22;
-      rings[1].rotation.z = -t * 0.17;
-      rings[2].rotation.y = t * 0.28;
-      particles.rotation.y = t * 0.07;
-      camera.position.x += (mx * 0.55 - camera.position.x) * 0.05;
-      camera.position.y += (-my * 0.4 - camera.position.y) * 0.05;
-      camera.lookAt(scene.position);
+      can.rotation.y = t * 0.55 + mx * 0.25;
+      can.rotation.x = Math.sin(t * 0.5) * 0.08 - my * 0.06;
+      can.position.y = 0.2 + Math.sin(t * 0.9) * 0.18;
+      goldPL.position.x = Math.sin(t * 0.7) * 4;
+      goldPL.position.y = Math.cos(t * 0.5) * 3;
+      camera.position.x += (mx * 0.4 - camera.position.x) * 0.05;
+      camera.position.y += (-my * 0.3 + 0.3 - camera.position.y) * 0.05;
+      camera.lookAt(0, 0.2, 0);
       renderer.render(scene, camera);
     })();
   })();
 
-  /* ── FEATURE SCENES ── */
-  function featureScene(id, torusCol, emCol) {
-    const canvas = document.getElementById(id);
-    if (!canvas) return;
+  /* ──────────────────────────────────────
+     SCROLL SCENE
+  ────────────────────────────────────── */
+  (function scrollScene() {
+    const canvas = document.getElementById('scroll-canvas');
+    const sticky = document.getElementById('scroll-sticky');
+    const section = document.getElementById('scroll-section');
+    if (!canvas || !sticky || !section) return;
 
-    const renderer = makeRenderer(canvas);
+    const renderer = makeRenderer(canvas, false);
+    renderer.setClearColor(0xf5f7fc, 1);
+
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 50);
-    camera.position.z = 4;
+    scene.background = new THREE.Color(0xf5f7fc);
 
-    const torus = new THREE.Mesh(
-      new THREE.TorusGeometry(1, 0.38, 32, 100),
-      new THREE.MeshPhongMaterial({ color: torusCol, emissive: emCol, specular: 0xffffff, shininess: 70 })
-    );
-    scene.add(torus);
-
-    const inner = new THREE.Mesh(
-      new THREE.SphereGeometry(0.38, 32, 32),
-      new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: 0x203050, shininess: 100 })
-    );
-    scene.add(inner);
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-    const l = new THREE.DirectionalLight(0xffffff, 1.2);
-    l.position.set(3, 3, 3);
-    scene.add(l);
-    const pl = new THREE.PointLight(torusCol, 1.8, 12);
-    pl.position.set(-2, 1, 2);
-    scene.add(pl);
-
-    const wrap = canvas.parentElement;
-    function resize() {
-      renderer.setSize(wrap.offsetWidth, wrap.offsetHeight);
-      camera.aspect = wrap.offsetWidth / wrap.offsetHeight;
-      camera.updateProjectionMatrix();
-    }
-    resize();
-    new ResizeObserver(resize).observe(wrap);
-
-    const clock = new THREE.Clock();
-    (function animate() {
-      requestAnimationFrame(animate);
-      const t = clock.getElapsedTime();
-      torus.rotation.x = t * 0.42;
-      torus.rotation.y = t * 0.28;
-      inner.rotation.y = t * 0.9;
-      renderer.render(scene, camera);
-    })();
-  }
-
-  featureScene('feat-canvas-1', 0xC8A23A, 0x6a4010);
-  featureScene('feat-canvas-2', 0x1048A0, 0x082060);
-  featureScene('feat-canvas-3', 0xDCE9FB, 0x405078);
-
-  /* ── ABOUT SCENE ── */
-  (function aboutScene() {
-    const canvas = document.getElementById('about-canvas');
-    if (!canvas) return;
-
-    const renderer = makeRenderer(canvas);
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.z = 7;
-
-    /* Center sphere */
-    const center = new THREE.Mesh(
-      new THREE.SphereGeometry(0.85, 48, 48),
-      new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: 0x2a3c60, shininess: 140 })
-    );
-    scene.add(center);
-
-    /* Orbital rings */
-    const rDefs = [
-      { r: 1.7,  tube: 0.06,  col: 0xC8A23A, em: 0x6a4010, rx: Math.PI/3,   spd:  0.38 },
-      { r: 2.4,  tube: 0.045, col: 0x1048A0, em: 0x082060, rx: Math.PI/2.2, spd: -0.28 },
-      { r: 3.1,  tube: 0.035, col: 0xE8C96A, em: 0x604e10, rx: Math.PI/4,   spd:  0.22 },
-      { r: 3.8,  tube: 0.025, col: 0xDCE9FB, em: 0x405078, rx: Math.PI/1.6, spd: -0.16 },
-    ];
-    const ringMeshes = rDefs.map(d => {
-      const m = new THREE.Mesh(
-        new THREE.TorusGeometry(d.r, d.tube, 16, 120),
-        new THREE.MeshPhongMaterial({ color: d.col, emissive: d.em })
-      );
-      m.rotation.x = d.rx;
-      m.userData.spd = d.spd;
-      scene.add(m);
-      return m;
-    });
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(0, 0, 8);
 
     /* Lights */
-    scene.add(new THREE.AmbientLight(0xffffff, 0.3));
-    const dir = new THREE.DirectionalLight(0xffffff, 1);
-    dir.position.set(5, 5, 5);
-    scene.add(dir);
-    const plGold = new THREE.PointLight(0xC8A23A, 2.2, 22);
-    plGold.position.set(-4, 3, 3);
-    scene.add(plGold);
-    const plBlue = new THREE.PointLight(0x1048A0, 1.6, 22);
-    plBlue.position.set(4, -3, 2);
-    scene.add(plBlue);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    const key = new THREE.DirectionalLight(0xffffff, 2);
+    key.position.set(5, 8, 6);
+    key.castShadow = true;
+    scene.add(key);
+    const fill = new THREE.DirectionalLight(0x8899ff, 0.8);
+    fill.position.set(-4, 1, 3);
+    scene.add(fill);
+    const rim = new THREE.DirectionalLight(0xffe090, 1.2);
+    rim.position.set(0, 4, -5);
+    scene.add(rim);
+    const goldPL = new THREE.PointLight(0xc8a23a, 3, 20);
+    goldPL.position.set(-3, 3, 5);
+    scene.add(goldPL);
 
+    /* Shadow plane */
+    const shadowPlane = new THREE.Mesh(
+      new THREE.PlaneGeometry(12, 12),
+      new THREE.ShadowMaterial({ opacity: 0.12 })
+    );
+    shadowPlane.rotation.x = -Math.PI / 2;
+    shadowPlane.position.y = -2;
+    shadowPlane.receiveShadow = true;
+    scene.add(shadowPlane);
+
+    const can = buildCan(scene);
+
+    /* Scroll state */
+    let scrollProgress = 0;
+
+    function getProgress() {
+      const rect = section.getBoundingClientRect();
+      const total = section.offsetHeight - window.innerHeight;
+      return Math.max(0, Math.min(1, -rect.top / total));
+    }
+
+    const panels = [
+      document.getElementById('panel-1'),
+      document.getElementById('panel-2'),
+      document.getElementById('panel-3'),
+    ];
+
+    function showPanel(idx) {
+      panels.forEach((p, i) => {
+        if (!p) return;
+        if (i === idx) {
+          p.classList.add('show');
+        } else {
+          p.classList.remove('show');
+        }
+      });
+    }
+
+    /* Resize */
     function resize() {
-      const w = canvas.offsetWidth, h = canvas.offsetHeight;
+      const w = sticky.offsetWidth;
+      const h = sticky.offsetHeight;
       if (!w || !h) return;
       renderer.setSize(w, h);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
     }
     resize();
-    new ResizeObserver(resize).observe(canvas);
+    new ResizeObserver(resize).observe(sticky);
 
     const clock = new THREE.Clock();
-    (function animate() {
-      requestAnimationFrame(animate);
+    let lastTime = 0;
+
+    (function loop() {
+      requestAnimationFrame(loop);
       const t = clock.getElapsedTime();
-      center.rotation.y = t * 0.3;
-      center.scale.setScalar(1 + Math.sin(t * 0.9) * 0.03);
-      ringMeshes.forEach(m => { m.rotation.z += m.userData.spd * 0.01; });
+      const delta = t - lastTime;
+      lastTime = t;
+
+      const target = getProgress();
+      scrollProgress += (target - scrollProgress) * 0.08;
+      const p = scrollProgress;
+
+      /* ── Three phases of scroll ── */
+      // Phase 0–0.33 : spin & float, panel 1
+      // Phase 0.33–0.66 : tilt & move left, panel 2
+      // Phase 0.66–1   : zoom in from below, panel 3
+
+      const p1 = Math.max(0, Math.min(1, p / 0.33));
+      const p2 = Math.max(0, Math.min(1, (p - 0.33) / 0.33));
+      const p3 = Math.max(0, Math.min(1, (p - 0.66) / 0.34));
+
+      // Rotation
+      can.rotation.y = t * 0.3 + p * Math.PI * 2.5;
+      can.rotation.x = p2 * 0.45 * Math.sin(p2 * Math.PI) - p3 * 0.2;
+      can.rotation.z = p2 * 0.18 * Math.sin(p2 * Math.PI);
+
+      // Position
+      const xOffset = p2 * 1.6 * Math.sin(p2 * Math.PI) - p3 * 0.8;
+      const yFloat  = Math.sin(t * 0.8) * 0.15;
+      const yScroll = -p1 * 0.4 + p2 * 0.4 - p3 * 0.2;
+      can.position.set(xOffset, yFloat + yScroll, 0);
+
+      // Scale
+      const scale = 1 + p1 * 0.08 - p2 * 0.05 + p3 * 0.18;
+      can.scale.setScalar(scale);
+
+      // Camera z drift
+      camera.position.z = 8 - p3 * 1.2;
+      camera.lookAt(can.position);
+
+      // Gold light pulse
+      goldPL.intensity = 2.5 + Math.sin(t * 1.2) * 0.8;
+
+      // Panels
+      if (p < 0.28) showPanel(0);
+      else if (p < 0.62) showPanel(1);
+      else showPanel(2);
+
       renderer.render(scene, camera);
     })();
   })();
+
+  /* ──────────────────────────────────────
+     GSAP SCROLL ANIMATIONS
+  ────────────────────────────────────── */
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.fade-up').forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 55 },
+        {
+          opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
+          delay: el.style.getPropertyValue('--delay') ? parseFloat(el.style.getPropertyValue('--delay')) : 0,
+          scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+        }
+      );
+    });
+
+    gsap.utils.toArray('.fade-left').forEach(el => {
+      gsap.fromTo(el, { opacity: 0, x: -55 }, {
+        opacity: 1, x: 0, duration: .9, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+      });
+    });
+
+    gsap.utils.toArray('.fade-right').forEach(el => {
+      gsap.fromTo(el, { opacity: 0, x: 55 }, {
+        opacity: 1, x: 0, duration: .9, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+      });
+    });
+  }
+
+  /* ──────────────────────────────────────
+     MOBILE: smooth anchor scrolling for hero btns
+  ────────────────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
 
 })();
 </script>
-
 </body>
 </html>
